@@ -28,3 +28,13 @@ You have to comment 2 things in the file:
 		skip-external-locking
 		bind-address
 
+# NPM, LARAVEL-MIX, SASS
+
+Install node & npm check versions:
+
+		node -v
+		npm -v
+
+To run webpack packages use the following command
+
+		npm run (watch)
