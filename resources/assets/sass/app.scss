@@ -8,7 +8,14 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
-* {
-	color: blue;
-	background-color: black;
+.bg-image {
+	background: url('/images/background/deliveroo.jpg') no-repeat center center;
+	background-size: cover;
+}
+
+.logo {
+	background: url('/images/logo.png') no-repeat center center;
+	background-size: cover;
+	width: 500px;
+	height: 150px;
 }

@@ -9,7 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}" />
         <!-- Styles -->
         <style>
             html, body {
@@ -65,7 +65,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height bg-image">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -78,17 +78,10 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+                <div class="logo"></div>
+                {{-- <div class="title m-b-md">
                     Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </body>
