@@ -13,7 +13,7 @@ class CreateContestTable extends Migration
      */
     public function up()
     {
-        Schema::create('contest', function (Blueprint $table) {
+        Schema::create('contests', function (Blueprint $table) {
             $table->increments('contest_id');
             $table->string('title')->nullable()->unique();
             $table->text('content')->nullable();
