@@ -11,18 +11,21 @@
 |
 */
 
-Route::get('/', ['uses' => 'ContestController@index']);
+Route::get('/', ['as' => 'contest.index', 'uses' => 'ContestController@index']);
 
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
-	Route::prefix('admin')->group(function() {
-		Route::get('', ['uses' => 'AdminController@index']);
+	Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+		Route::get('', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
 		Route::prefix('participants')->group(function() {
 			Route::get('', ['as' => 'participants', 'uses' => 'UserController@index']);
-			Route::put('edit', ['as' => 'participants.edit', 'uses' => 'UserController@edit']);
-			Route::delete('change', ['as' => 'participants.change', 'uses' => 'UserController@change']);
-			Route::delete('delete', ['as' => 'participants.delete', 'uses' => 'UserController@destroy']);
+			Route::get('change/{user_id}', ['as' => 'participants.change', 'uses' => 'UserController@change']);
+			Route::get('delete/{user_id}', ['as' => 'participants.delete', 'uses' => 'UserController@destroy']);
 		});
 	});
 });
+
+// facebook socialite
+Route::get('login/facebook', ['as' => 'login.facebook', 'uses' => 'Auth\LoginController@redirectToProvider']);
+Route::get('login/facebook/callback', ['as' => 'login.facebook.callback', 'uses' => 'Auth\LoginController@handleProviderCallback']);

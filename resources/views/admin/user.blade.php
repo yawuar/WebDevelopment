@@ -14,13 +14,10 @@
 		  				{{ Carbon\Carbon::parse($user['created_at'])->format('F d, Y') }}
 		  			</div>
 		  			<div class="buttons pull-right">
-		  				<a class="pencil" href="{{ route('participants.edit') }}">
-				          <span class="glyphicon glyphicon-pencil"></span>
-				        </a>
-						<a class="remove" href="{{ route('participants.delete') }}">
+						<a class="remove" href="{{ route('participants.delete', ['user_id' => $user['user_id']]) }}">
 				          <span class="glyphicon glyphicon-remove"></span>
 				        </a>
-				        <a class="user" href="{{ route('participants.change') }}">
+				        <a class="{{ ($user['is_admin'] == 1) ? 'admin' : 'user' }}" href="{{ route('participants.change', ['user_id' => $user['user_id']]) }}">
 				          <span class="glyphicon glyphicon-user"></span>
 				        </a>
 		  			</div>

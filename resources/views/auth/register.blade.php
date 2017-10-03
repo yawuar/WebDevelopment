@@ -39,6 +39,7 @@
                             </div>
                         </div>
 
+
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address" class="col-md-4 control-label">Address</label>
 
@@ -136,6 +137,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
+                            </div>
+                            <div class="col-md-6 col-md-offset-4">
+                                <a href="{{ route('login.facebook') }}" class="btn btn-primary">Login with Facebook</a>
                             </div>
                         </div>
                     </form>

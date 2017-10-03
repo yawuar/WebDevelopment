@@ -8362,3 +8362,22 @@ button.close {
   bottom: 10px;
 }
 
+a.navbar-brand {
+  background-image: url("/images/logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+}
+
+.remove span {
+  color: #c71f16;
+}
+
+.user span {
+  color: #b4b4b4;
+}
+
+.admin span {
+  color: #16c72e;
+}
+

@@ -22,7 +22,6 @@
                         <div class="logo"></div>
                         <div class="title m-b-md">{{ $contest['title'] }}</div>
                         <div class="description">{!! $contest['content'] !!}</div>
-                        <a href="/">Participate</a>
                     </div>
                 </div>
             </div>
