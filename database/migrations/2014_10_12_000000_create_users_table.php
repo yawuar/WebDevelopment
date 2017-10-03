@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('ip_address')->nullable();
             $table->string('password');
-            $table->boolean('is_admin');
+            $table->boolean('is_admin')->default(0);
             $table->integer('contest_id');
             $table->rememberToken();
             $table->timestamps();

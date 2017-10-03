@@ -19,7 +19,9 @@ class CreateContestPhotosTable extends Migration
             $table->string('title')->nullable();
             $table->text('content')->nullable();
             $table->integer('user_id');
-            $table->integer('vote_id');
+            $table->integer('likes');
+            $table->integer('superlikes');
+            $table->integer('contest_id');
             $table->softDeletes();
             $table->timestamps();
         });

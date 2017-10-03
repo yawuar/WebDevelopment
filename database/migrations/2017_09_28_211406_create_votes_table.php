@@ -17,6 +17,7 @@ class CreateVotesTable extends Migration
             $table->increments('vote_id');
             $table->integer('like')->default(0);
             $table->integer('super_like')->default(0);
+            $table->integer('contest_id');
             $table->integer('user_id');
             $table->softDeletes();
             $table->timestamps();
