@@ -12,6 +12,7 @@
 */
 
 Route::get('/', ['as' => 'contest.index', 'uses' => 'ContestController@index']);
+Route::get('/contest', ['as' => 'contest.index', 'uses' => 'ContestPhotosController@index']);
 
 Auth::routes();
 
