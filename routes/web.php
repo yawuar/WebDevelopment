@@ -12,7 +12,10 @@
 */
 
 Route::get('/', ['as' => 'contest.index', 'uses' => 'ContestController@index']);
-Route::get('/contest', ['as' => 'contest.index', 'uses' => 'ContestPhotosController@index']);
+Route::prefix('contest')->group(function() {
+	Route::get('/', ['as' => 'contest.index', 'uses' => 'ContestPhotosController@index']);
+	Route::post('/add', ['as' => 'contest.store', 'uses' => 'ContestPhotosController@store']);
+});
 
 Auth::routes();
 

@@ -8430,3 +8430,9 @@ body {
   text-transform: uppercase;
 }
 
+.equal-height div {
+  background-size: cover;
+  background-position: center center;
+  height: 250px;
+}
+

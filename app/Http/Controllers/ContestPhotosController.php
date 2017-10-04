@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Contest;
 use App\ContestPhotos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContestPhotosController extends Controller
 {
@@ -35,8 +37,26 @@ class ContestPhotosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        // var_dump(public_path() . '/images/contest/');
+        // return '';
+        $contest_id = Contest::select('contest_id')->where('is_active', 1)->get()->first(); 
+        if ($request->hasFile('photo_path')) {
+            $request->file('photo_path')->store('/images/contest');
+            
+            // ensure every image has a different name
+            $file_name = '/images/contest/' . $request->file('photo_path')->hashName();
+
+            ContestPhotos::create([
+                'photo_path' => $file_name,
+                'title' => $request['title'],
+                'content' => $request['content'],
+                'user_id' => Auth::user()->user_id,
+                'contest_id' => $contest_id['contest_id']
+            ]);
+        }
+
+        return redirect()->back();
     }
 
     /**
