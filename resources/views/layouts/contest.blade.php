@@ -14,7 +14,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
+    @include('includes.header')
+	<div class="container-fluid contest">
         <div class="row">
             @yield('content')  
         </div>

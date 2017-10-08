@@ -8380,24 +8380,17 @@ body {
   position: relative;
 }
 
-.container {
+.container-fluid {
   text-align: center;
   color: white;
 }
 
-.container .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.container-fluid.contest {
+  margin-top: 200px;
+  color: black;
 }
 
-.container .row .logo {
+.container-fluid .row .logo {
   background: url("/images/logo.svg") no-repeat center center;
   background-size: contain;
   width: 100%;
@@ -8405,13 +8398,25 @@ body {
   margin: 0 auto;
 }
 
-.container .row .title {
+.container-fluid .row .title {
+  text-align: center;
   font-size: 28px;
   font-weight: bold;
 }
 
-.container .row .title.m-b-md {
+.container-fluid .row .title.m-b-md {
   margin-bottom: 30px;
+}
+
+.container-fluid .row a {
+  display: inline-block;
+  margin-top: 25px;
+  background-color: white;
+  padding: 10px 25px;
+  color: black;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
 }
 
 .top-right {
@@ -8434,5 +8439,65 @@ body {
   background-size: cover;
   background-position: center center;
   height: 250px;
+}
+
+#logo-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 250px solid #00CCBC;
+  border-right: 500px solid transparent;
+}
+
+#user-banner {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+}
+
+#user-banner .user-management .image-wrapper,
+#user-banner .user-management .content {
+  float: right;
+}
+
+#user-banner .user-management .image-wrapper {
+  width: 50px;
+  height: 50px;
+  background-color: #000;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+#user-banner .user-management .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  border-radius: 50%;
+}
+
+#user-banner .user-management .content {
+  margin: 5px 20px 5px 0;
+  text-align: right;
+}
+
+#user-banner .user-management .content h4 {
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 25px;
+  color: white;
+  margin: 0;
+}
+
+#user-banner .user-management .content a {
+  display: block;
+  margin-top: -5px;
+  font-size: .9em;
+  font-weight: bold;
 }
 

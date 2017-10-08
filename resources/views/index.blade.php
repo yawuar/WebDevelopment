@@ -16,12 +16,14 @@
     </head>
     <body>
         <div style="background: url('{{ $contest['photo_path'] }}') no-repeat center center; background-size: cover;" class="flex-center position-ref full-height">
-            <div class="container">
+        @include('includes.header')
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="logo"></div>
                         <div class="title m-b-md">{{ $contest['title'] }}</div>
                         <div class="description">{!! $contest['content'] !!}</div>
+                        <a href="{{ route('contest.index') }}">Contest</a>
                     </div>
                 </div>
             </div>

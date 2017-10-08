@@ -38,8 +38,6 @@ class ContestPhotosController extends Controller
      */
     public function store(Request $request)
     {   
-        // var_dump(public_path() . '/images/contest/');
-        // return '';
         $contest_id = Contest::select('contest_id')->where('is_active', 1)->get()->first(); 
         if ($request->hasFile('photo_path')) {
             $request->file('photo_path')->store('/images/contest');

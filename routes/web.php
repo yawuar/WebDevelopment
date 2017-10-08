@@ -11,14 +11,24 @@
 |
 */
 
+// Authtentication routes
+Auth::routes();
+Route::get('logout', 'Auth\LoginController@logout');
+
+// routes for the front-end application
 Route::get('/', ['as' => 'contest.index', 'uses' => 'ContestController@index']);
 Route::prefix('contest')->group(function() {
 	Route::get('/', ['as' => 'contest.index', 'uses' => 'ContestPhotosController@index']);
-	Route::post('/add', ['as' => 'contest.store', 'uses' => 'ContestPhotosController@store']);
+	Route::group(['middleware' => ['auth']], function () {
+		Route::post('/add', ['as' => 'contest.store', 'uses' => 'ContestPhotosController@store']);
+		Route::prefix('votes')->group(function() {
+			Route::post('like/add/{contest_photos_id}', ['as' => 'votes.storeLike', 'uses' => 'VotesController@storeLike']);
+			Route::post('superlike/add/{contest_photos_id}', ['as' => 'votes.storeSuperLike', 'uses' => 'VotesController@storeSuperLike']);
+		});
+	});
 });
 
-Auth::routes();
-
+// routes for the back-end application which is used by the administrators
 Route::group(['middleware' => ['auth']], function () {
 	Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 		Route::get('', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
@@ -30,6 +40,6 @@ Route::group(['middleware' => ['auth']], function () {
 	});
 });
 
-// facebook socialite
+// Routes to login & register in facebook
 Route::get('login/facebook', ['as' => 'login.facebook', 'uses' => 'Auth\LoginController@redirectToProvider']);
 Route::get('login/facebook/callback', ['as' => 'login.facebook.callback', 'uses' => 'Auth\LoginController@handleProviderCallback']);

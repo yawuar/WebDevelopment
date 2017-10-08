@@ -26,10 +26,17 @@ class ContestController extends Controller
 
 		$time = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Europe/Brussels'))->format('Y-m-d H:i:s');
 
+		// this also works
+		//var_dump(Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Europe/Brussels'))->between(Carbon::createFromFormat('Y-m-d H:i:s', $contest['starting_date']), Carbon::createFromFormat('Y-m-d H:i:s', $contest['ending_date'])));
+
 		if($time >= $contest['starting_date'] && $time <= $contest['ending_date']) {
-			var_dump('contest is still busy');
+			// var_dump('contest is still busy');
+			// contest is still busy
+			// check if contest = 1
 		} else {
-			var_dump('contest is over');
+			// var_dump('contest is over');
+			// contest is over start new one
+			// set contest active = 0
 		}
 
 		return view('index')->with('contest', $contest);

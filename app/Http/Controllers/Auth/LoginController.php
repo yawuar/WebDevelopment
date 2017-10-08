@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -56,22 +57,29 @@ class LoginController extends Controller
         $user = Socialite::driver('facebook')->fields([
             'name', 'first_name', 'last_name', 'email'
         ])->user();
+        // dd($user->avatar);
         $findUser = User::where('email', $user->email)->first();
         $contest_id = Contest::select('contest_id')->where('is_active', 1)->get()->first();
 
         if($findUser) {
-
+            // dd(public_path());
             Auth::login($findUser);
             return redirect()->route('contest.index');
 
         } else {
+
+            $fileContents = file_get_contents($user->avatar);
+            // dd(public_path());
+            File::put(public_path() . '/images/users/' . $user->getId() . ".jpg", $fileContents);
+
             $user = User::create([
                 'firstname' => $user['first_name'],
                 'lastname' => $user['last_name'],
                 'email' => $user['email'],
                 'ip_address' => $_SERVER['REMOTE_ADDR'],
                 'password' => bcrypt(123456),
-                'contest_id' => $contest_id['contest_id']
+                'contest_id' => $contest_id['contest_id'],
+                'photo_path' => '/images/users/' . $user->getId() . ".jpg"
             ]);
 
             Auth::login($user);
