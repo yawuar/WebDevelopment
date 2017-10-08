@@ -1,5 +1,5 @@
 <div id="logo-banner">
-	<img src="/images/logo.svg" alt="Deliveroo">
+	<a class="logo" href="{{ route('contest.home') }}"></a>
 </div>
 
 <div id="user-banner">

@@ -3,9 +3,8 @@
 @section('content')
 	
 		@foreach($contestPhotos as $contestPhoto)
-			<div class="col-sm-4 equal-height">
-				<div style="background-image: url('{{ $contestPhoto['photo_path'] }}');"></div>
-				@if(Auth::check())
+			<div class="col-md-4">
+				{{-- @if(Auth::check())
 					@if(Auth::user()->user_id == $contestPhoto['user_id'])
 						<p>You can't like this photo because it's yours</p>
 					@else
@@ -17,7 +16,21 @@
 					    	{!! Form::submit('superLike', ['onclick' => 'return confirm("Are you sure?");']) !!}
 						{{ Form::close() }}
 					@endif
-				@endif
+				@endif --}}
+			    	<div class="post-module">
+			      		<div class="thumbnail">
+			        		<div class="like">
+			        		</div>
+			        		<img src="{{ url($contestPhoto['photo_path']) }}" alt="{{ $contestPhoto['title'] }}"/>
+			      		</div>
+			      	<div class="post-content">
+			        	<h1 class="title">{{ $contestPhoto['title'] }}</h1>
+			        	<p class="description">{{ $contestPhoto['content'] }}</p>
+			        	<div class="post-meta">
+			        		<span class="timestamp">{{ $contestPhoto['created_at'] }}</span>
+			        	</div>
+			      	</div>
+			      </div>
 			</div>
 		@endforeach
 
@@ -35,3 +48,14 @@
 		</div>
 
 @endsection
+{{-- 
+<script>
+	$(window).load(function() {
+	  $('.post-module').hover(function() {
+	    $(this).find('.description').stop().animate({
+	      height: "toggle",
+	      opacity: "toggle"
+	    }, 300);
+	  });
+	});
+</script> --}}

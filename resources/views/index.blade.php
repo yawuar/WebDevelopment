@@ -20,7 +20,6 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="logo"></div>
                         <div class="title m-b-md">{{ $contest['title'] }}</div>
                         <div class="description">{!! $contest['content'] !!}</div>
                         <a href="{{ route('contest.index') }}">Contest</a>

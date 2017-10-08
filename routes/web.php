@@ -16,7 +16,7 @@ Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
 
 // routes for the front-end application
-Route::get('/', ['as' => 'contest.index', 'uses' => 'ContestController@index']);
+Route::get('/', ['as' => 'contest.home', 'uses' => 'ContestController@index']);
 Route::prefix('contest')->group(function() {
 	Route::get('/', ['as' => 'contest.index', 'uses' => 'ContestPhotosController@index']);
 	Route::group(['middleware' => ['auth']], function () {

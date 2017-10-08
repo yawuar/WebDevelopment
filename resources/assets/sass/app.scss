@@ -8,6 +8,8 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+$green: #00CCBC;
+
 html, body {
     background-color: #fff;
     color: #636b6f;
@@ -34,21 +36,19 @@ html, body {
 .container-fluid {
 	text-align: center;
 	color: white;
+    max-width: 1140px;
 
     &.contest {
         margin-top: 200px;
         color: black;
+
+        .col-md-4 {
+            padding-bottom: 15px;
+            padding-top: 15px;
+        }
     }
 
 	.row {
-		.logo {
-			background: url('/images/logo.svg') no-repeat center center;
-			background-size: contain;
-			width: 100%;
-			height: 150px;
-			margin: 0 auto;
-		}
-
 		.title {
             text-align: center;
     		font-size: 28px;
@@ -70,6 +70,16 @@ html, body {
             text-transform: uppercase;
         }
 	}
+
+    input[type=submit] {
+        background-color: $green;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+        width: 100%;
+    }
 }
 
 .top-right {
@@ -87,25 +97,34 @@ html, body {
     text-transform: uppercase;
 }
 
-.equal-height div {
-    background-size: cover;
-    background-position: center center;
-    height: 250px;
+#logo-banner, #user-banner {
+    z-index: 2;
 }
 
 #logo-banner {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 
     width: 0;
     height: 0;
-    border-top: 250px solid #00CCBC;
+    border-top: 250px solid $green;
     border-right: 500px solid transparent;
+
+    .logo {
+        background: url('/images/logo.svg') no-repeat center center;
+        background-size: contain;
+        position: fixed;
+        top: 5%;
+        left: 5%;
+        width: 200px;
+        height: 75px;
+        z-index: 99;
+    }
 }
 
 #user-banner {
-    position: absolute;
+    position: fixed;
     top: 50px;
     right: 100px;
 
@@ -154,11 +173,93 @@ html, body {
                 font-weight: bold;
             }
         }
-
-        // &:after {
-        //     content: '';
-        //     display: block;
-        //     clear: both;
-        // }
     }
 }
+
+.post-module {
+    position: relative;
+    z-index: 1;
+    display: block;
+    background: #FFFFFF;
+    min-width: 270px;
+    height: 470px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+
+    &:hover .thumbnail img, .hover .thumbnail img {
+        transform: scale(1.1);
+        opacity: .6;
+    }
+
+    .thumbnail {
+        background: #000000;
+        height: 400px;
+        overflow: hidden;
+        padding: 0;
+        border-radius: 0;
+
+        .like {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1;
+            background: $green;
+            width: 55px;
+            height: 55px;
+            padding: 12.5px 0;
+            border-radius: 100%;
+            color: #FFFFFF;
+            font-weight: 700;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        img {
+            display: block;
+            width: 120%;
+            transition: all 0.3s linear 0s;
+        }
+    }
+
+    .post-content {
+        position: absolute;
+        bottom: 0;
+        background: #FFFFFF;
+        width: 100%;
+        padding: 30px;
+        box-sizing: border-box;
+
+        .title {
+            margin: 0;
+            padding: 0 0 10px;
+            color: #333333;
+            font-size: 26px;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .description {
+            display: none;
+            color: #666666;
+            font-size: 14px;
+            line-height: 1.8em;
+            text-align: left;
+        }
+
+        .post-meta {
+            margin: 30px 0 0;
+            color: #999999;
+            text-align: left;
+
+            .timestamp {
+                margin: 0 16px 0 0;
+            }
+        }
+
+        .description {
+            display: block !important;
+            height: auto !important;
+            opacity: 1 !important;
+        }
+    }
+}
+
