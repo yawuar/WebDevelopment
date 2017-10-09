@@ -42,9 +42,12 @@ html, body {
         margin-top: 200px;
         color: black;
 
-        .col-md-4 {
-            padding-bottom: 15px;
-            padding-top: 15px;
+        .row {
+            margin: 0 auto;
+            .col-md-4 {
+                padding-bottom: 15px;
+                padding-top: 15px;
+            }
         }
     }
 
@@ -185,6 +188,13 @@ html, body {
     height: 470px;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
 
+    &.form {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
     &:hover .thumbnail img, .hover .thumbnail img {
         transform: scale(1.1);
         opacity: .6;
@@ -198,19 +208,22 @@ html, body {
         border-radius: 0;
 
         .like {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1;
-            background: $green;
-            width: 55px;
-            height: 55px;
-            padding: 12.5px 0;
-            border-radius: 100%;
-            color: #FFFFFF;
-            font-weight: 700;
-            text-align: center;
-            box-sizing: border-box;
+            input {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                z-index: 1;
+                background: #00CCBC;
+                width: 40px;
+                height: 40px;
+                padding: 10px 0;
+                border-radius: 100%;
+                font-size: 0.8em;
+                color: #FFFFFF;
+                font-weight: 700;
+                text-align: center;
+                box-sizing: border-box;
+            }
         }
 
         img {
@@ -231,7 +244,7 @@ html, body {
         .title {
             margin: 0;
             padding: 0 0 10px;
-            color: #333333;
+            color: $green;
             font-size: 26px;
             font-weight: 700;
             text-align: left;
