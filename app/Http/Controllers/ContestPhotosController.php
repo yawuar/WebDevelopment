@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contest;
 use App\ContestPhotos;
+use App\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -101,4 +102,24 @@ class ContestPhotosController extends Controller
     {
         //
     }
+
+    public function calculateLikes() {
+        // needs to be placed in a cronjob
+        $votes = Vote::select('contest_photos_id')->groupBy('contest_photos_id')->get();
+        foreach($votes as $vote) {
+            $voteLikes = Vote::where('contest_photos_id', $vote['contest_photos_id'])->where('like', 1)->count();
+            $voteSuperLikes = Vote::where('contest_photos_id', $vote['contest_photos_id'])->where('super_like', 1)->count();
+            if($voteLikes != 0) {
+                contestPhotos::where('contest_photos_id', $vote['contest_photos_id'])->update([
+                    'likes' => $voteLikes
+                ]);
+            }
+
+            if($voteSuperLikes != 0) {
+                contestPhotos::where('contest_photos_id', $vote['contest_photos_id'])->update([
+                    'superlikes' => $voteSuperLikes
+                ]);
+            }
+        }
+    } 
 }

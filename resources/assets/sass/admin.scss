@@ -36,3 +36,12 @@ a.navbar-brand {
 .admin span {
     color: #16c72e;
 }
+
+.container {
+    .col-md-6.detail {
+        height: 300px;
+        img {
+            width: 100%;
+        }
+    }
+}

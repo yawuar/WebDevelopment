@@ -21,6 +21,7 @@ Route::prefix('contest')->group(function() {
 	Route::get('/', ['as' => 'contest.index', 'uses' => 'ContestPhotosController@index']);
 	Route::group(['middleware' => ['auth']], function () {
 		Route::post('/add', ['as' => 'contest.store', 'uses' => 'ContestPhotosController@store']);
+		Route::get('/test', ['uses' => 'ContestPhotosController@calculateLikes']);
 		Route::prefix('votes')->group(function() {
 			Route::post('like/add/{contest_photos_id}', ['as' => 'votes.storeLike', 'uses' => 'VotesController@storeLike']);
 			Route::post('superlike/add/{contest_photos_id}', ['as' => 'votes.storeSuperLike', 'uses' => 'VotesController@storeSuperLike']);
@@ -36,6 +37,11 @@ Route::group(['middleware' => ['auth']], function () {
 			Route::get('', ['as' => 'participants', 'uses' => 'UserController@index']);
 			Route::get('change/{user_id}', ['as' => 'participants.change', 'uses' => 'UserController@change']);
 			Route::get('delete/{user_id}', ['as' => 'participants.delete', 'uses' => 'UserController@destroy']);
+		});
+		Route::prefix('contests')->group(function() {
+			Route::get('', ['as' => 'contests.index', 'uses' => 'ContestController@getContests']);
+			Route::post('add', ['as' => 'contests.add', 'uses' => 'ContestController@store']);
+			Route::delete('{contest_id}', ['as' => 'contests.delete', 'uses' => 'ContestController@destroy']);
 		});
 	});
 });

@@ -38,7 +38,7 @@
 			        	<h1 class="title">{{ ucfirst($contestPhoto['title']) }}</h1>
 			        	<p class="description">{{ $contestPhoto['content'] }}</p>
 			        	<div class="post-meta">
-			        		<span class="timestamp">{{ $contestPhoto['created_at'] }}</span>
+			        		<span class="timestamp">{{ Carbon\Carbon::parse($contestPhoto['created_at'])->format('F d, Y') }}</span>
 			        	</div>
 			      	</div>
 			      </div>
