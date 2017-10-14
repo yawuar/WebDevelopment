@@ -8350,18 +8350,6 @@ button.close {
   }
 }
 
-.created_at.pull-right {
-  position: absolute;
-  right: 25px;
-  top: 10px;
-}
-
-.buttons.pull-right {
-  position: absolute;
-  right: 25px;
-  bottom: 10px;
-}
-
 a.navbar-brand {
   background-image: url("/images/logo.svg");
   background-size: contain;
@@ -8369,16 +8357,12 @@ a.navbar-brand {
   width: 150px;
 }
 
-.remove span {
-  color: #c71f16;
-}
-
 .user span {
   color: #b4b4b4;
 }
 
 .admin span {
-  color: #16c72e;
+  color: #00CCBC;
 }
 
 .container .col-md-6.detail {
@@ -8387,5 +8371,37 @@ a.navbar-brand {
 
 .container .col-md-6.detail img {
   width: 100%;
+}
+
+.disqualified {
+  color: #c71f16;
+}
+
+.notdisqualified {
+  color: #b4b4b4;
+}
+
+.list-group-item {
+  padding: 10px 0 10px 15px;
+}
+
+.list-group-item .inner_content,
+.list-group-item .delete_btn {
+  float: left;
+}
+
+.list-group-item .inner_content {
+  width: 95%;
+}
+
+.list-group-item .delete_btn {
+  width: 5%;
+  background-color: #c71f16;
+}
+
+.list-group-item::after {
+  clear: both;
+  display: block;
+  content: "";
 }
 

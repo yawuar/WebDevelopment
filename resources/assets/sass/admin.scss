@@ -6,17 +6,21 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
-.created_at.pull-right {
-	position: absolute;
-    right: 25px;
-    top: 10px;
-}
+$red: #c71f16;
+$grey: #b4b4b4;
+$green: #00CCBC;
 
-.buttons.pull-right {
-	position: absolute;
-    right: 25px;
-    bottom: 10px;
-}
+// .created_at.pull-right {
+// 	position: absolute;
+//     right: 25px;
+//     top: 10px;
+// }
+
+// .buttons.pull-right {
+// 	position: absolute;
+//     right: 25px;
+//     bottom: 10px;
+// }
 
 a.navbar-brand {
 	background-image: url('/images/logo.svg');
@@ -25,16 +29,12 @@ a.navbar-brand {
     width: 150px;
 }
 
-.remove span{
-    color: #c71f16;
-}
-
 .user span {
-    color: #b4b4b4;
+    color: $grey;
 }
 
 .admin span {
-    color: #16c72e;
+    color: $green;
 }
 
 .container {
@@ -43,5 +43,34 @@ a.navbar-brand {
         img {
             width: 100%;
         }
+    }
+}
+
+.disqualified {
+    color: $red;
+}
+
+.notdisqualified {
+    color: $grey;
+}
+
+.list-group-item {
+    padding: 10px 0 10px 15px;
+    .inner_content, .delete_btn {
+        float: left;
+    }
+    .inner_content {
+        width: 95%;
+    }
+
+    .delete_btn {
+        width: 5%;
+        background-color: $red;
+    }
+
+    &::after {
+        clear: both;
+        display: block;
+        content: "";
     }
 }

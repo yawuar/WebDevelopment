@@ -195,17 +195,17 @@ html, body {
         align-items: center;
     }
 
-    &:hover .thumbnail img, .hover .thumbnail img {
-        transform: scale(1.1);
-        opacity: .6;
-    }
-
     .thumbnail {
         background: #000000;
-        height: 400px;
+        height: 300px;
         overflow: hidden;
         padding: 0;
         border-radius: 0;
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+
 
         .like {
             input {
@@ -213,7 +213,7 @@ html, body {
                 top: 20px;
                 right: 20px;
                 z-index: 1;
-                background: #00CCBC;
+                background: $green;
                 width: 40px;
                 height: 40px;
                 padding: 10px 0;
@@ -224,12 +224,6 @@ html, body {
                 text-align: center;
                 box-sizing: border-box;
             }
-        }
-
-        img {
-            display: block;
-            width: 120%;
-            transition: all 0.3s linear 0s;
         }
     }
 

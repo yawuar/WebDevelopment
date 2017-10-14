@@ -18,7 +18,7 @@
 					@endif
 				@endif --}}
 			    	<div class="post-module">
-			      		<div class="thumbnail">
+			      		<div class="thumbnail" style="background-image: url({{ $contestPhoto['photo_path']  }});">
 			      			@if(Auth::check())
 								@if(Auth::user()->user_id == $contestPhoto['user_id'])
 									<!-- show it's your photo button -->
@@ -27,12 +27,11 @@
 								    	{!! Form::submit('like', ['onclick' => 'return confirm("Are you sure?");']) !!}
 									{{ Form::close() }}
 
-									{{-- {{ Form::open(array('url' => route('votes.storeSuperLike', ['id' => $contestPhoto['contest_photos_id']]))) }}
+									{{ Form::open(array('url' => route('votes.storeSuperLike', ['id' => $contestPhoto['contest_photos_id']]), 'class' => 'like superlike')) }}
 								    	{!! Form::submit('superLike', ['onclick' => 'return confirm("Are you sure?");']) !!}
-									{{ Form::close() }} --}}
+									{{ Form::close() }}
 								@endif
 							@endif
-			        		<img src="{{ url($contestPhoto['photo_path']) }}" alt="{{ $contestPhoto['title'] }}"/>
 			      		</div>
 			      	<div class="post-content">
 			        	<h1 class="title">{{ ucfirst($contestPhoto['title']) }}</h1>
@@ -61,14 +60,3 @@
 		</div>
 
 @endsection
-{{-- 
-<script>
-	$(window).load(function() {
-	  $('.post-module').hover(function() {
-	    $(this).find('.description').stop().animate({
-	      height: "toggle",
-	      opacity: "toggle"
-	    }, 300);
-	  });
-	});
-</script> --}}

@@ -39,5 +39,10 @@
             @yield('content')  
         </div>
     </div>
+    <footer>
+        <div class="container contest">
+            <a href="{{ route('admin.index') }}">admin</a>
+        </div>
+    </footer>
 </body>
 </html>

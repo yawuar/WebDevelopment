@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('photo_path')->nullable();
             $table->boolean('is_admin')->default(0);
+            $table->boolean('disqualified')->default(0);
             $table->integer('contest_id');
             $table->rememberToken();
             $table->softDeletes();

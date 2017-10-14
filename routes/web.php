@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::prefix('participants')->group(function() {
 			Route::get('', ['as' => 'participants', 'uses' => 'UserController@index']);
 			Route::get('change/{user_id}', ['as' => 'participants.change', 'uses' => 'UserController@change']);
+			Route::get('disqualify/{user_id}', ['as' => 'participants.disqualify', 'uses' => 'UserController@disqualify']);
 			Route::get('delete/{user_id}', ['as' => 'participants.delete', 'uses' => 'UserController@destroy']);
 		});
 		Route::prefix('contests')->group(function() {
