@@ -16,8 +16,8 @@ class CreateWinnersTable extends Migration
         Schema::create('winners', function (Blueprint $table) {
             $table->increments('winner_id');
             $table->integer('user_id');
-            $table->integer('contest_id');
-            $table->rememberToken();
+            $table->integer('contest_photos_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

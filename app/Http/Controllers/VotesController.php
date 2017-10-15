@@ -25,11 +25,11 @@ class VotesController extends Controller
     }
 
     public function storeSuperLike(Request $request, $contest_photos_id) {
-        $vote = Vote::where('contest_photos_id', $contest_photos_id)->where('user_id', Auth::user()->user_id)->get()->first();
-        // var_dump($vote['vote_id']);
-        if(!$vote) {
+        $vote = Vote::where('user_id', Auth::user()->user_id)->where('super_like', 1)->get();
+        // set time. Every user can use 1 super like every 24 hours
+        if(count($vote) < 1) {
             Vote::create([
-            'like' => 0,
+                'like' => 0,
                 'super_like' => 1,
                 'contest_photos_id' => $contest_photos_id,
                 'user_id' => Auth::user()->user_id

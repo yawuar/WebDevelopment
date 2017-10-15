@@ -51,12 +51,21 @@ class CheckContestExpire extends Command
             // contest is still busy
             // check if contest = 1
         } else {
-            var_dump('contest is over');
+            getWinner();
             Contest::where('is_active', $active_number)->update([
                 'is_active' => 0
             ]);
             // contest is over start new one
             // set contest active = 0
         }
+    }
+
+    protected function getWinner() {
+        // get all contest photos, get all votes above 0
+        // select which user & which contest photo has the most likes
+        // like = 1 point & superlike = 5 points
+        // If user with the biggest like (like + superlike)
+        // add it to the winner table and show on the homepage
+        return 'hallo';
     }
 }
