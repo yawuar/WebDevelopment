@@ -3,8 +3,12 @@
 namespace App\Console\Commands;
 
 use App\Contest;
+use App\ContestPhotos;
+use App\Vote;
+use App\Winner;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class CheckContestExpire extends Command
 {
@@ -43,29 +47,55 @@ class CheckContestExpire extends Command
         $active_number = 1;
         // get contest that is active
         $contest = Contest::where('is_active', $active_number)->get()->first(); 
-
-        $time = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Europe/Brussels'))->format('Y-m-d H:i:s');
-
-        if($time >= $contest['starting_date'] && $time <= $contest['ending_date']) {
-            var_dump('contest is still busy');
-            // contest is still busy
-            // check if contest = 1
+        if(count($contest) > 0) {
+            $time = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Europe/Brussels'))->format('Y-m-d H:i:s');
+            if($time >= $contest['starting_date'] && $time <= $contest['ending_date']) {
+                var_dump('contest is still busy');
+                // contest is still busy
+                // check if contest = 1
+            } else {
+                $this->getWinner();
+                Contest::where('is_active', $active_number)->update([
+                    'is_active' => 0
+                ]);
+                // contest is over start new one
+                // set contest active = 0
+            }
         } else {
-            getWinner();
-            Contest::where('is_active', $active_number)->update([
-                'is_active' => 0
-            ]);
-            // contest is over start new one
-            // set contest active = 0
+            // echo 'There is no contest';
         }
     }
 
     protected function getWinner() {
-        // get all contest photos, get all votes above 0
-        // select which user & which contest photo has the most likes
-        // like = 1 point & superlike = 5 points
-        // If user with the biggest like (like + superlike)
-        // add it to the winner table and show on the homepage
-        return 'hallo';
+        // get Contest Photos likes & superlikes
+        $likes = ContestPhotos::orderBy('likes', 'desc')->get();
+        // set default value of largest to 0
+        $largest = 0;
+        // set object with null as default value
+        $obj = null;
+        // check if there are any likes
+        if(count($likes) > 0) {
+            // loop through likes
+            foreach($likes as $like) {
+                // calculate the likes & superlikes
+                $total = $like['likes'] + $like['superlikes'];
+                // check if total is greater then largest number
+                if($total > $largest) {
+                    // put object with largest value in the obj variable
+                    $obj = $like;
+                    $largest = $total;
+                }
+            }
+
+            // check if object exists
+            if($obj) {
+                // insert winner into database
+                Winner::create([
+                    'user_id' => $obj['user_id'],
+                    'contest_photos_id' => $obj['contest_photos_id']
+                ]);
+            }
+        }
     }
 }
+

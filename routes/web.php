@@ -21,7 +21,6 @@ Route::prefix('contest')->group(function() {
 	Route::get('/', ['as' => 'contest.index', 'uses' => 'ContestPhotosController@index']);
 	Route::group(['middleware' => ['auth']], function () {
 		Route::post('/add', ['as' => 'contest.store', 'uses' => 'ContestPhotosController@store']);
-		Route::get('/test', ['uses' => 'ContestPhotosController@calculateLikes']);
 		Route::prefix('votes')->group(function() {
 			Route::post('like/add/{contest_photos_id}', ['as' => 'votes.storeLike', 'uses' => 'VotesController@storeLike']);
 			Route::post('superlike/add/{contest_photos_id}', ['as' => 'votes.storeSuperLike', 'uses' => 'VotesController@storeSuperLike']);
