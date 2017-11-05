@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\CheckContestExpire::class,
+        Commands\SendExcel::class,
     ];
 
     /**
@@ -24,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('do:checkContestExpire')
-            ->everyMinute();
+        // $schedule->command('do:sendExcel')->dailyAt('20:39');
+        $schedule->command('do:checkContestExpire')->everyMinute();
     }
 
     /**

@@ -3,9 +3,11 @@
 namespace App\Console\Commands;
 
 use App\ContestPhotos;
+use App\Mail\SendingMails;
+use Excel;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use Excel;
+use Mail;
 
 class SendExcel extends Command
 {
@@ -40,15 +42,20 @@ class SendExcel extends Command
      */
     public function handle()
     {
+        $mime = 'application/vnd.ms-excel'; 
+        $display = 'participants.xlsx';
         $contestPhotos = ContestPhotos::select('users.firstname', 'users.lastname', 'users.email', 'contest_photos.title', 'contest_photos.likes', 'contest_photos.superlikes')
-            ->whereDate('contest_photos.created_at', DB::raw('CURDATE()'))->join('users','users.user_id', '=', 'contest_photos.user_id')->get();
-        Excel::create('participants', function($excel)  use($contestPhotos){
+            ->whereDate('contest_photos.updated_at', DB::raw('CURDATE()'))->join('users','users.user_id', '=', 'contest_photos.user_id')->get();
+            
+        $file = Excel::create('participants', function($excel)  use($contestPhotos){
           $excel->sheet('participants', function($sheet) use($contestPhotos) {
             $sheet->loadView('participants.excel')->with('contestPhotos', $contestPhotos);
-            //$sheet->fromArray($contestPhotos);
           });
-        })->save('xlsx', storage_path('app/exports'));
+        });
+        Mail::send('emails.send', [], function($message) use($file){
+            $message->to('yawuarsernadelgado@gmail.com');
+            $message->attach($file->store("xls",false,true)['full']);
+        });
 
-        echo $contestPhotos;
     }
 }

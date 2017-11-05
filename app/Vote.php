@@ -18,6 +18,6 @@ class Vote extends Model
      * @var array
      */
     protected $fillable = [
-        'like', 'super_like', 'contest_photos_id', 'user_id'
+        'like', 'super_like', 'isLiked', 'contest_photos_id', 'user_id'
     ];
 }

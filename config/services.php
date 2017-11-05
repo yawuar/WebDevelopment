@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => 'mg.sernadelgado.be',
+        'secret' => 'key-5add590cfcbe373d5ec8d450ceddfcac',
     ],
 
     'ses' => [

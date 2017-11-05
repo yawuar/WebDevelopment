@@ -23,6 +23,7 @@ Route::prefix('contest')->group(function() {
 		Route::post('/add', ['as' => 'contest.store', 'uses' => 'ContestPhotosController@store']);
 		Route::prefix('votes')->group(function() {
 			Route::post('like/add/{contest_photos_id}', ['as' => 'votes.storeLike', 'uses' => 'VotesController@storeLike']);
+			Route::delete('like/remove/{contest_photos_id}', ['as' => 'votes.unLike', 'uses' => 'VotesController@unLike']);
 			Route::post('superlike/add/{contest_photos_id}', ['as' => 'votes.storeSuperLike', 'uses' => 'VotesController@storeSuperLike']);
 		});
 	});
@@ -45,6 +46,9 @@ Route::group(['middleware' => ['auth']], function () {
 		});
 	});
 });
+
+// Routes for email
+Route::get('/send', 'EmailController@send');
 
 // Routes to login & register in facebook
 Route::get('login/facebook', ['as' => 'login.facebook', 'uses' => 'Auth\LoginController@redirectToProvider']);

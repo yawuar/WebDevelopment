@@ -34,7 +34,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        @include('includes.header')
+        {{-- <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -89,7 +90,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
         <div class="container">
             <div class="row">
                 @yield('content')  

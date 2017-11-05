@@ -19,16 +19,39 @@ class VotesController extends Controller
             $createdVote = Vote::create([
                 'like' => 1,
                 'super_like' => 0,
+                'isLiked' => 1,
                 'contest_photos_id' => $contest_photos_id,
                 'user_id' => Auth::user()->user_id
             ]);
             // if vote is succesfully inserted update & increment column likes from contest photos
             if($createdVote) ContestPhotos::where('contest_photos_id', $contest_photos_id)->increment('likes');
             return redirect()->back();
-        } else {
+        }
+
+        if($vote){
+            $isLiked = 1;
+            $voted = Vote::where('contest_photos_id', $contest_photos_id)->where('user_id', Auth::user()->user_id)->where('isLiked', 0);
+            // var_dump($voted->get()->first()['isLiked']);
+            // return '';
+            $voted->update(['isLiked' => $isLiked]);
+
             // tell user that contest photo is already liked
             return redirect()->back();
         }
+    }
+
+    public function unLike($contest_photos_id) {
+        // get vote only if user doesn't have like a specific photo
+        $vote = Vote::where('contest_photos_id', $contest_photos_id)
+            ->where('user_id', Auth::user()->user_id)
+            ->where('like', 1);
+        $contestPhoto = ContestPhotos::where('contest_photos_id', $contest_photos_id);
+
+        $contestPhoto->decrement('likes');
+        $vote->update(['isLiked' => 0]);
+        // $vote->delete();
+
+        return redirect()->back();
     }
 
     public function storeSuperLike(Request $request, $contest_photos_id) {

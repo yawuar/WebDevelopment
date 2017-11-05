@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contest;
+use App\Winner;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -14,13 +15,28 @@ class ContestController extends Controller
 		// get contest that is active
 		$contest = Contest::where('is_active', $active_number)->get()->first(); 
 		// return view with data of contest
-		return view('index')->with('contest', $contest);
+		$winners = Winner::select('users.firstname', 'users.lastname', 'contests.title', 'users.photo_path')->join('users', 'users.user_id', '=', 'winners.user_id')
+			->join('contests', 'contests.contest_id', '=', 'users.contest_id')
+			->limit(5)->get();
+		return view('index', ['contest' => $contest, 'winners' => $winners]);
 	}
 
 	public function getContests() {
 		$contests = Contest::get();
 		return view('admin.contests')->with('contests', $contests); 
 	}
+
+	// protected function validator(array $data)
+ //    {
+ //        return Validator::make($data, [
+ //            'title' => 'required|string|max:255',
+ //            'content' => 'required|string|max:255',
+ //            'starting_date' => 'required|string|max:255',
+ //            'ending_date' => 'required|integer|max:255',
+ //            'photo_path' => 'required|string|max:255',
+ //            'is_active' => 'required|string|max:255',
+ //        ]);
+ //    }
 
 	public function store(Request $request) {
 		if ($request->hasFile('photo_path')) {

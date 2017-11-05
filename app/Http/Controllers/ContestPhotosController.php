@@ -7,6 +7,7 @@ use App\ContestPhotos;
 use App\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ContestPhotosController extends Controller
 {
@@ -17,7 +18,7 @@ class ContestPhotosController extends Controller
      */
     public function index()
     {
-        $contestPhotos = ContestPhotos::all();
+        $contestPhotos = ContestPhotos::get();
         return view('contest.index')->with('contestPhotos', $contestPhotos);
     }
 
@@ -39,6 +40,12 @@ class ContestPhotosController extends Controller
      */
     public function store(Request $request)
     {   
+
+        $this->validate($request, [
+            'photo_path' => 'required|image',
+            'title' => 'required|string|max:25',
+            'content' => 'required|string|max:100',
+        ]);
         $contest_id = Contest::select('contest_id')->where('is_active', 1)->get()->first(); 
         if ($request->hasFile('photo_path')) {
             $request->file('photo_path')->store('/images/contest');

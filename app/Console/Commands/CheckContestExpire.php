@@ -9,6 +9,7 @@ use App\Winner;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Mail;
 
 class CheckContestExpire extends Command
 {
@@ -89,6 +90,11 @@ class CheckContestExpire extends Command
 
             // check if object exists
             if($obj) {
+                // send e-mail
+                Mail::raw('Iemand heeft gewonnen', function($message)
+                {
+                    $message->to('yawuarsernadelgado@gmail.com');
+                });
                 // insert winner into database
                 Winner::create([
                     'user_id' => $obj['user_id'],

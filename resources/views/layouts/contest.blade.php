@@ -30,10 +30,22 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     @include('includes.header')
+    <!-- Modal Structure -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
 	<div class="container-fluid contest">
         <div class="row">
             @yield('content')  
@@ -44,5 +56,14 @@
             <a href="{{ route('admin.index') }}">admin</a>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.modal').modal();
+            });
+        </script>
 </body>
 </html>

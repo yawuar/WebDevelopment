@@ -10,17 +10,9 @@ $red: #c71f16;
 $grey: #b4b4b4;
 $green: #00CCBC;
 
-// .created_at.pull-right {
-// 	position: absolute;
-//     right: 25px;
-//     top: 10px;
-// }
-
-// .buttons.pull-right {
-// 	position: absolute;
-//     right: 25px;
-//     bottom: 10px;
-// }
+#app {
+    margin-top: 100px;
+}
 
 a.navbar-brand {
 	background-image: url('/images/logo.svg');
@@ -72,5 +64,87 @@ a.navbar-brand {
         clear: both;
         display: block;
         content: "";
+    }
+}
+
+nav#navigation {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: $green;
+    z-index: 2;
+
+    height: 10%;
+
+    .container-fluid {
+        height: 100%;
+        position: relative;
+        max-width: 1140px;
+        #logo-banner {
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            padding: 10px 0;
+            .logo {
+                display: block;
+                background: url('/images/logo.svg') no-repeat center center;
+                background-size: contain;
+                width: auto;
+                height: 100%;
+            }
+        }
+
+        #user-banner {
+            height: 100%;
+            width: 250px;
+            position: absolute;
+            right: 0;
+            color: white;
+
+            .user-management {
+                height: 100%;
+                width: 100%;
+                .image-wrapper, .content {
+                    float: left;
+                }
+
+                .image-wrapper {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100%;
+                    width: 25%;
+                    img {
+                        border-radius: 50%;
+                    }
+                }
+
+                .content {
+                    width: 75%;
+                    height: 100%;
+                    text-align: left;
+                    padding: 0 10px;
+                    display: flex;
+                    align-items: center;
+
+                    .inner {
+                        h4 {
+                            margin: 0;
+                            font-size: 1em;
+                        }
+
+                        a {
+                            display: block;
+                            line-height: 20px;
+                            font-size: .8em;
+                            float: left;
+                            margin-right: 10px;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
