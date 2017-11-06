@@ -55,7 +55,7 @@ nav#navigation {
             .logo {
                 display: block;
                 background: url('/images/logo.svg') no-repeat center center;
-                background-size: contain;
+                background-size: 100%;
                 width: auto;
                 height: 100%;
             }
@@ -313,6 +313,44 @@ nav#navigation {
         background-repeat: no-repeat;
         background-position: center center;
 
+        .superlikes , .likes{
+            position: absolute;
+            width: 30%;
+            color: white;
+            font-weight: bold;
+            height: 25px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                display: inline-block;
+                background-size: contain;
+                background-repeat: no-repeat;
+                position: absolute;
+                left: 10px;
+                padding: 7px;
+            }
+        }
+
+        .superlikes {
+            background-color: $red;
+            top: 17.5%;
+
+            span {
+                background-image: url(/images/icons/star.svg);
+            }
+        }
+    
+        .likes {
+            background-color: $green;
+            top: 10%;
+
+            span {
+                background-image: url(/images/icons/heart.svg);
+            }
+        }
 
         .like {
             input {
@@ -370,6 +408,31 @@ nav#navigation {
                 color: #999999;
                 text-align: left;
 
+                .user {
+                    display: flex;
+                    align-items: center;
+                    img, p {
+                        float: left;
+                    }
+
+                    img {
+                        border-radius: 50%;
+                    }
+
+                    p {
+                        color: black;
+                        font-size: .9em;
+                        font-weight: 300;
+                        margin: 0 0 0 15px;
+                    }
+
+                    &::after {
+                        clear: both;
+                        display: block;
+                        content: "";
+                    }
+                }
+
                 .timestamp {
                     margin: 0 16px 0 0;
                 }
@@ -399,6 +462,29 @@ nav#navigation {
                     height: 50px;
                     margin: 0;
                     border-radius: 0;
+
+                    &.heart, &.star, &.full_heart, &.full_star {
+                        background-size: 12.5%;
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        text-indent: -1000px;
+                    }
+
+                    &.heart {
+                        background-image: url(/images/icons/heart.svg);
+                    }
+
+                    &.star {
+                        background-image: url(/images/icons/star.svg);
+                    }
+
+                    &.full_heart {
+                        background-image: url(/images/icons/full_heart.svg);
+                    }
+
+                    &.full_star {
+                        background-image: url(/images/icons/full_star.svg);
+                    }
                 }
             }
 

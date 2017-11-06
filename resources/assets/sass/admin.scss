@@ -29,11 +29,28 @@ a.navbar-brand {
     color: $green;
 }
 
-.container {
+.container-fluid {
+    max-width: 1140px;
     .col-md-6.detail {
-        height: 300px;
+        height: 400px;
+        overflow: hidden;
+        padding: 0;
+
+        &:nth-child(even) {
+            background-color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .inner_content {
+                width: 80%;
+            }
+        }
+
         img {
-            width: 100%;
+            width: auto;
+            height: 100%;
         }
     }
 }

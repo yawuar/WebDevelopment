@@ -8405,7 +8405,7 @@ nav#navigation .container-fluid #logo-banner {
 nav#navigation .container-fluid #logo-banner .logo {
   display: block;
   background: url("/images/logo.svg") no-repeat center center;
-  background-size: contain;
+  background-size: 100%;
   width: auto;
   height: 100%;
 }
@@ -8670,6 +8670,52 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
   background-position: center center;
 }
 
+.post-module .thumbnail .superlikes,
+.post-module .thumbnail .likes {
+  position: absolute;
+  width: 30%;
+  color: white;
+  font-weight: bold;
+  height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post-module .thumbnail .superlikes span,
+.post-module .thumbnail .likes span {
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 10px;
+  padding: 7px;
+}
+
+.post-module .thumbnail .superlikes {
+  background-color: #ee6d66;
+  top: 17.5%;
+}
+
+.post-module .thumbnail .superlikes span {
+  background-image: url(/images/icons/star.svg);
+}
+
+.post-module .thumbnail .likes {
+  background-color: #00CCBC;
+  top: 10%;
+}
+
+.post-module .thumbnail .likes span {
+  background-image: url(/images/icons/heart.svg);
+}
+
 .post-module .thumbnail .like input {
   position: absolute;
   top: 20px;
@@ -8729,6 +8775,37 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
   text-align: left;
 }
 
+.post-module .post-content .inner .post-meta .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post-module .post-content .inner .post-meta .user img,
+.post-module .post-content .inner .post-meta .user p {
+  float: left;
+}
+
+.post-module .post-content .inner .post-meta .user img {
+  border-radius: 50%;
+}
+
+.post-module .post-content .inner .post-meta .user p {
+  color: black;
+  font-size: .9em;
+  font-weight: 300;
+  margin: 0 0 0 15px;
+}
+
+.post-module .post-content .inner .post-meta .user::after {
+  clear: both;
+  display: block;
+  content: "";
+}
+
 .post-module .post-content .inner .post-meta .timestamp {
   margin: 0 16px 0 0;
 }
@@ -8758,6 +8835,32 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
   height: 50px;
   margin: 0;
   border-radius: 0;
+}
+
+.post-module .post-content .post-likes form input.heart,
+.post-module .post-content .post-likes form input.star,
+.post-module .post-content .post-likes form input.full_heart,
+.post-module .post-content .post-likes form input.full_star {
+  background-size: 12.5%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-indent: -1000px;
+}
+
+.post-module .post-content .post-likes form input.heart {
+  background-image: url(/images/icons/heart.svg);
+}
+
+.post-module .post-content .post-likes form input.star {
+  background-image: url(/images/icons/star.svg);
+}
+
+.post-module .post-content .post-likes form input.full_heart {
+  background-image: url(/images/icons/full_heart.svg);
+}
+
+.post-module .post-content .post-likes form input.full_star {
+  background-image: url(/images/icons/full_star.svg);
 }
 
 .post-module .post-content .post-likes form.superlike input {

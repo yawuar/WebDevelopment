@@ -21,6 +21,7 @@ class CreateContestTable extends Migration
             $table->dateTime('starting_date')->nullable();
             $table->dateTime('ending_date')->nullable();
             $table->boolean('is_active');
+            $table->integer('user_id');
             $table->softDeletes();
             $table->timestamps();
         });

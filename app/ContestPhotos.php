@@ -26,4 +26,8 @@ class ContestPhotos extends Model
     public function votes() {
         return $this->hasMany('App\Vote', 'contest_photos_id');
     }
+
+    public function user() {
+        return $this->belongsTo('App\User', 'user_id');
+    }
 }

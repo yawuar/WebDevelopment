@@ -8369,12 +8369,36 @@ a.navbar-brand {
   color: #00CCBC;
 }
 
-.container .col-md-6.detail {
-  height: 300px;
+.container-fluid {
+  max-width: 1140px;
 }
 
-.container .col-md-6.detail img {
-  width: 100%;
+.container-fluid .col-md-6.detail {
+  height: 400px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.container-fluid .col-md-6.detail:nth-child(even) {
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-fluid .col-md-6.detail:nth-child(even) .inner_content {
+  width: 80%;
+}
+
+.container-fluid .col-md-6.detail img {
+  width: auto;
+  height: 100%;
 }
 
 .disqualified {

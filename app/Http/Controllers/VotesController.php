@@ -12,6 +12,7 @@ class VotesController extends Controller
     public function storeLike(Request $request, $contest_photos_id) {
         // get vote only if user doesn't have like a specific photo
         $vote = Vote::where('contest_photos_id', $contest_photos_id)->where('user_id', Auth::user()->user_id)->get()->first();
+        $contestPhoto = ContestPhotos::where('contest_photos_id', $contest_photos_id);
 
         // check if user has already liked it
         if(!$vote) {
@@ -31,8 +32,7 @@ class VotesController extends Controller
         if($vote){
             $isLiked = 1;
             $voted = Vote::where('contest_photos_id', $contest_photos_id)->where('user_id', Auth::user()->user_id)->where('isLiked', 0);
-            // var_dump($voted->get()->first()['isLiked']);
-            // return '';
+            $contestPhoto->increment('likes');
             $voted->update(['isLiked' => $isLiked]);
 
             // tell user that contest photo is already liked
@@ -65,6 +65,7 @@ class VotesController extends Controller
             $createdVote = Vote::create([
                 'like' => 0,
                 'super_like' => 1,
+                'isLiked' => 1,
                 'contest_photos_id' => $contest_photos_id,
                 'user_id' => Auth::user()->user_id
             ]);

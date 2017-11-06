@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('do:sendExcel')->dailyAt('20:39');
+        $schedule->command('do:sendExcel')->daily();
         $schedule->command('do:checkContestExpire')->everyMinute();
     }
 

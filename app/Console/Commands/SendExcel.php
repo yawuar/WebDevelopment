@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Contest;
 use App\ContestPhotos;
 use App\Mail\SendingMails;
+use App\Vote;
 use Excel;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -42,20 +44,24 @@ class SendExcel extends Command
      */
     public function handle()
     {
+        echo 'Generate E-mail';
         $mime = 'application/vnd.ms-excel'; 
         $display = 'participants.xlsx';
-        $contestPhotos = ContestPhotos::select('users.firstname', 'users.lastname', 'users.email', 'contest_photos.title', 'contest_photos.likes', 'contest_photos.superlikes')
-            ->whereDate('contest_photos.updated_at', DB::raw('CURDATE()'))->join('users','users.user_id', '=', 'contest_photos.user_id')->get();
-            
+        $contestPhotos = Vote::select('users.firstname', 'users.lastname', 'users.email', 'contest_photos.title', 'contest_photos.likes', 'contest_photos.superlikes')
+            ->join('users','users.user_id', '=', 'votes.user_id')
+            ->join('contest_photos', 'contest_photos.contest_photos_id', '=', 'votes.contest_photos_id')
+            ->whereDate('votes.updated_at', DB::raw('CURDATE() - 1'))
+            ->get();
+        $mail = Contest::join('users', 'users.user_id', '=', 'contests.user_id')->where('contests.is_active', 1)->get()->first();
+
         $file = Excel::create('participants', function($excel)  use($contestPhotos){
           $excel->sheet('participants', function($sheet) use($contestPhotos) {
             $sheet->loadView('participants.excel')->with('contestPhotos', $contestPhotos);
           });
         });
-        Mail::send('emails.send', [], function($message) use($file){
-            $message->to('yawuarsernadelgado@gmail.com');
+        Mail::send('emails.send', ['mail' => $mail], function($message) use($file, $mail){
+            $message->to($mail['email']);
             $message->attach($file->store("xls",false,true)['full']);
         });
-
     }
 }

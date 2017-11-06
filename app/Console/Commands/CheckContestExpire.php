@@ -44,6 +44,7 @@ class CheckContestExpire extends Command
      */
     public function handle()
     {
+        echo 'check if contest is expired';
         // set active number var
         $active_number = 1;
         // get contest that is active
@@ -51,19 +52,18 @@ class CheckContestExpire extends Command
         if(count($contest) > 0) {
             $time = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Europe/Brussels'))->format('Y-m-d H:i:s');
             if($time >= $contest['starting_date'] && $time <= $contest['ending_date']) {
-                var_dump('contest is still busy');
                 // contest is still busy
                 // check if contest = 1
+                echo 'contest is still busy';
             } else {
                 $this->getWinner();
                 Contest::where('is_active', $active_number)->update([
                     'is_active' => 0
                 ]);
-                // contest is over start new one
-                // set contest active = 0
+                // TODO: contest is over start new one
             }
         } else {
-            // echo 'There is no contest';
+            echo 'There is no contest';
         }
     }
 

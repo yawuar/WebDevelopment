@@ -5,13 +5,20 @@
 		@foreach($contestPhotos as $contestPhoto)
 			<div class="col-xs-12 col-sm-6 col-md-4">
 			    <div class="post-module">
-			      	<div class="thumbnail" style="background-image: url({{ $contestPhoto['photo_path']  }});"></div>
+			      	<div class="thumbnail" style="background-image: url({{ $contestPhoto['photo_path']  }});">
+			      		<div class="likes"><span></span>{{ $contestPhoto['likes']  }}</div>
+			      		<div class="superlikes"><span></span>{{ $contestPhoto['superlikes']  }}</div>
+			      	</div>
 			      	<div class="post-content">
 			      		<div class="inner">
 			      			<h1 class="title">{{ ucfirst($contestPhoto['title']) }}</h1>
 				        	<p class="description">{{ $contestPhoto['content'] }}</p>
 				        	<div class="post-meta">
-				        		<span class="timestamp">{{ Carbon\Carbon::parse($contestPhoto['created_at'])->format('F d, Y') }}</span>
+				        		{{-- <span class="timestamp">{{ Carbon\Carbon::parse($contestPhoto['created_at'])->format('F d, Y') }}</span> --}}
+				        		<div class="user">
+				        			<img src="{{ ($contestPhoto->user()->get()->first()['photo_path'] != null) ? $contestPhoto->user()->get()->first()['photo_path'] : url('/images/users/avatar.png') }}" alt="{{ $contestPhoto->user()->get()->first()['firstname'] }}" width="35" height="35">
+				        			<p>{{ $contestPhoto->user()->get()->first()['firstname'] }} {{ $contestPhoto->user()->get()->first()['lastname'] }}</p>
+				        		</div>
 				        	</div>
 			      		</div>
 			      		<div class="post-likes">
@@ -22,19 +29,19 @@
 									{{-- @if() --}}
 									@if($contestPhoto->votes()->where('user_id', Auth::user()->user_id)->get()->first()['isLiked'] == 1)
 										{{ Form::open(array('url' => route('votes.unLike', ['id' => $contestPhoto['contest_photos_id']]), 'class' => 'like', 'method' => 'delete')) }}
-										{!! Form::submit('unlike', ['onclick' => 'return confirm("Are you sure?");']) !!}
+										{!! Form::submit('unlike', ['onclick' => 'return confirm("Are you sure?");', 'class' => ($contestPhoto->votes()->where('user_id', Auth::user()->user_id)->get()->first()['like'] == 1) ? 'full_heart' : 'heart']) !!}
 										{{ Form::close() }}
 
 										{{ Form::open(array('url' => route('votes.storeSuperLike', ['id' => $contestPhoto['contest_photos_id']]), 'class' => 'like superlike')) }}
-										{!! Form::submit('superLike', ['onclick' => 'return confirm("Are you sure?");']) !!}
+										{!! Form::submit('superLike', ['onclick' => 'return confirm("Are you sure?");', 'class' => (count($contestPhoto->votes()->where('user_id', Auth::user()->user_id)->where('super_like', 1)->get()) == 1) ? 'full_star' : 'star']) !!}
 									{{ Form::close() }}
 									@else
 										{{ Form::open(array('url' => route('votes.storeLike', ['id' => $contestPhoto['contest_photos_id']]), 'class' => 'like')) }}
-											{!! Form::submit('like', ['onclick' => 'return confirm("Are you sure?");']) !!}
+											{!! Form::submit('like', ['onclick' => 'return confirm("Are you sure?");', 'class' => 'heart']) !!}
 											{{ Form::close() }}
 
 											{{ Form::open(array('url' => route('votes.storeSuperLike', ['id' => $contestPhoto['contest_photos_id']]), 'class' => 'like superlike')) }}
-											{!! Form::submit('superLike', ['onclick' => 'return confirm("Are you sure?");']) !!}
+											{!! Form::submit('superLike', ['onclick' => 'return confirm("Are you sure?");', 'class' => 'full_heart']) !!}
 										{{ Form::close() }}
 									@endif
 								@endif
@@ -45,7 +52,7 @@
 			</div>
 		@endforeach
 
-		<div class="col-md-4">
+		<div class="col-xs-12 col-sm-6 col-md-4">
 			<div class="post-module form">
 				<div class="panel panel-default">
 					<div class="panel-body">
