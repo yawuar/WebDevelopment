@@ -41,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'opdracht.dev'),
+            'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'webdevelopment'),
-            'username' => env('DB_USERNAME', 'yawuar'),
-            'password' => env('DB_PASSWORD', 'Adobexd2'),
+            'database' => env('DB_DATABASE', 'u13191p9416_deliveroo'),
+            'username' => env('DB_USERNAME', 'u13191p9416_yawuar'),
+            'password' => env('DB_PASSWORD', 'Adobeedge2'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
