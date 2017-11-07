@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class ContestPhotos extends Model
 {
@@ -24,10 +25,14 @@ class ContestPhotos extends Model
     ];
 
     public function votes() {
-        return $this->hasMany('App\Vote', 'contest_photos_id');
+        return $this
+            ->hasMany('App\Vote', 'contest_photos_id');
     }
 
     public function user() {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this
+            ->belongsTo('App\User', 'user_id')
+            ->get()
+            ->first();
     }
 }

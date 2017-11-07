@@ -8377,6 +8377,52 @@ a.navbar-brand {
   max-width: 1140px;
 }
 
+.container-fluid nav ul {
+  padding: 0;
+}
+
+.container-fluid nav ul li {
+  list-style: none;
+  float: left;
+  margin-right: 25px;
+  background-color: #00CCBC;
+}
+
+.container-fluid nav ul li a {
+  display: block;
+  padding: 15px 25px;
+  color: white;
+}
+
+.container-fluid nav ul li a:hover {
+  text-decoration: none;
+  background-color: #00998d;
+}
+
+.container-fluid nav ul::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.container-fluid .jumbotron {
+  background-color: white;
+  color: #00CCBC;
+  -webkit-box-shadow: 1px 1px 3px #bfbfbf;
+          box-shadow: 1px 1px 3px #bfbfbf;
+  border-radius: 0;
+}
+
+.container-fluid .jumbotron h1 {
+  font-size: 3em;
+}
+
+.container-fluid .jumbotron p {
+  font-size: 1.25em;
+  width: 75%;
+  color: black;
+}
+
 .container-fluid .wrapper {
   height: 450px;
   margin-bottom: 50px;
@@ -8395,15 +8441,41 @@ a.navbar-brand {
   height: 50px;
 }
 
-.container-fluid .wrapper .col-md-12.responsible p {
-  margin: 0;
+.container-fluid .wrapper .col-md-12.responsible .inner {
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container-fluid .wrapper .col-md-12.responsible .inner p,
+.container-fluid .wrapper .col-md-12.responsible .inner .icon {
+  float: left;
+}
+
+.container-fluid .wrapper .col-md-12.responsible .inner p {
+  margin: 0 25px 0 0;
   text-align: center;
   color: white;
   line-height: 50px;
 }
 
-.container-fluid .wrapper .col-md-12.responsible p span {
+.container-fluid .wrapper .col-md-12.responsible .inner p span {
   font-weight: bold;
+}
+
+.container-fluid .wrapper .col-md-12.responsible .inner .icon {
+  background-image: url("/images/icons/pencil.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 40%;
+  width: 50px;
 }
 
 .container-fluid .wrapper .col-md-6.content,

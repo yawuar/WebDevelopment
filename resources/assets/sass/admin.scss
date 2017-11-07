@@ -36,6 +36,52 @@ a.navbar-brand {
 
 .container-fluid {
     max-width: 1140px;
+
+    nav {
+        ul {
+            padding: 0;
+            li {
+                list-style: none;
+                float: left;
+                margin-right: 25px;
+                background-color: $green;
+                a {
+                    display: block;
+                    padding: 15px 25px;
+                    color: white;
+
+                    &:hover {
+                        text-decoration: none;
+                        background-color: darken($green, 10);
+                    }
+                }
+            }
+
+            &::after {
+                display: block;
+                content: "";
+                clear: both;
+            }
+        }
+    }
+
+    .jumbotron {
+        background-color: white;
+        color: $green;
+        box-shadow: 1px 1px 3px lighten(#000, 75);
+        border-radius: 0;
+
+        h1 {
+            font-size: 3em;
+        }
+
+        p {
+            font-size: 1.25em;
+            width: 75%;
+            color: black;
+        }
+    }
+
     .wrapper {
         height: 450px;
         margin-bottom: 50px;
@@ -47,15 +93,34 @@ a.navbar-brand {
         .col-md-12.responsible {
             background-color: $green;
             height: 50px;
-            p {
-                margin: 0;
-                text-align: center;
-                color: white;
-                line-height: 50px;
-                // padding: 15px 0;
 
-                span {
-                    font-weight: bold;
+            .inner {
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                p, .icon {
+                    float: left;
+                }
+
+                p {
+                    margin: 0 25px 0 0;
+                    text-align: center;
+                    color: white;
+                    line-height: 50px;
+
+                    span {
+                        font-weight: bold;
+                    }
+                }
+
+                .icon {
+                    background-image: url('/images/icons/pencil.svg');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    height: 40%;
+                    width: 50px;
                 }
             }
         }
