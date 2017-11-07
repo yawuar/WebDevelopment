@@ -32,23 +32,20 @@
 
 					<p>{{ $contest['content'] }}</p>
 
-					<input type="text" class="datepicker" value="{{ $contest['starting_date'] }}">
-
-					<input type="text" class="datepicker" value="{{ $contest['ending_date'] }}">
-
-					<p>{{ $contest['is_active'] }}</p>
+					<div class="{{ ($contest['is_active'] == 1) ? 'active' : 'inactive'  }}">
+						<span></span>
+						<p>{{ ($contest['is_active'] == 1) ? 'actief' : 'inactief'  }}</p>
+					</div>
 
 					<div class="buttons">
 
-						<button type="button" class="btn btn-primary change" data-toggle="modal" data-target="#exampleModalLong">
-
+						<a href="{{ route('contests.show', ['contest_id' => $contest['contest_id']]) }}" class="change">
 			  				Change
-
-						</button>
+						</a>
 
 						{{ Form::open(array('url' => route('contests.delete', ['contest_id' => $contest['contest_id']]), 'method' => 'delete')) }}
 
-							{!! Form::submit('Delete', ['onclick' => 'return confirm("Are you sure?");']) !!}
+							{!! Form::submit('Delete', ['onclick' => 'return confirm("Are you sure?");', ($contest['is_active'] == 1) ? 'disabled' : '']) !!}
 
 						{{ Form::close() }}
 
@@ -64,13 +61,7 @@
 
 	<div class="col-md-12">
 
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-
-		  Add
-
-		</button>
-
-		@include('includes.form.contest', ['type' => 'post', 'contest' => ''])
+		<a href="{{ route('contests.form') }}" class="btn btn-primary"></a>
 
 	</div>
 

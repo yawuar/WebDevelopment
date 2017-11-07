@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contest;
+use App\User;
 use App\Winner;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -23,20 +24,24 @@ class ContestController extends Controller
 
 	public function getContests() {
 		$contests = Contest::get();
-		return view('admin.contests')->with('contests', $contests); 
+		return view('admin.contests', ['contests' => $contests]); 
 	}
 
-	// protected function validator(array $data)
- //    {
- //        return Validator::make($data, [
- //            'title' => 'required|string|max:255',
- //            'content' => 'required|string|max:255',
- //            'starting_date' => 'required|string|max:255',
- //            'ending_date' => 'required|integer|max:255',
- //            'photo_path' => 'required|string|max:255',
- //            'is_active' => 'required|string|max:255',
- //        ]);
- //    }
+	public function showForm(Request $request) {
+		$responsibles = User::where('is_admin', 1)->get();
+		return view('contest.add', [
+			'responsibles' => $responsibles
+		]);
+	}
+
+	public function getContestById($contest_id) {
+		$contest = Contest::where('contest_id', $contest_id)->get()->first();
+		$responsibles = User::where('is_admin', 1)->get();
+		return view('contest.edit', [
+			'contest' => $contest,
+			'responsibles' => $responsibles
+		]);
+	}
 
 	public function store(Request $request) {
 		if ($request->hasFile('photo_path')) {
@@ -50,10 +55,32 @@ class ContestController extends Controller
 			'starting_date' => $request['starting_date'],
 			'ending_date' => $request['ending_date'],
 			'photo_path' => $file_name,
-			'is_active' => 0
+			'is_active' => 0,
+			'user_id' => $request['responsible']
 		]);
         }
 		return redirect()->route('contests.index');
+	}
+
+	public function update(Request $request, $contest_id) {
+		if ($request->hasFile('photo_path')) {
+			$contest = Contest::where('contest_id', $contest_id);
+            $request->file('photo_path')->store('/images/background');
+
+            
+            $file_name = '/images/background/' . $request->file('photo_path')->hashName();
+
+            $contest->update([
+				'title' => $request['title'],
+				'content' => $request['content'],
+				'photo_path' => $file_name,
+				'starting_date' => $request['starting_date'],
+				'ending_date' => $request['ending_date'],
+				'user_id' => $request['responsible']
+			]);
+        }
+		return redirect()->route('contests.index');
+
 	}
 
 	public function destroy($contest_id) {

@@ -52,7 +52,7 @@
         $('.datepicker').each(function() {
             new Pikaday({ 
                 field: $(this)[0],
-                format: 'DD-MM-YYYY'
+                format: 'YYYY-MM-DD HH:mm:ss'
             });
         });
     </script>

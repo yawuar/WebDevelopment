@@ -18,7 +18,7 @@ class Contest extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content', 'photo_path', 'starting_date', 'ending_date', 'is_active'
+        'title', 'content', 'photo_path', 'starting_date', 'ending_date', 'is_active', 'user_id'
     ];
 
     public function user() {

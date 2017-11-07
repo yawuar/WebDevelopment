@@ -28,6 +28,8 @@ class CheckContestExpire extends Command
      */
     protected $description = 'Check Contest Expire';
 
+    public $arrContests = [];
+
     /**
      * Create a new command instance.
      *
@@ -45,7 +47,6 @@ class CheckContestExpire extends Command
      */
     public function handle()
     {
-        echo 'check if contest is expired';
         // set active number var
         $active_number = 1;
         // get contest that is active
@@ -57,10 +58,28 @@ class CheckContestExpire extends Command
                 // check if contest = 1
                 echo 'contest is still busy';
             } else {
-                $this->getWinner();
-                Contest::where('is_active', $active_number)->update([
-                    'is_active' => 0
-                ]);
+                // $this->getWinner();
+
+                $contests = Contest::where('is_active', 0)->inRandomOrder()->get()->toArray();
+                  $this->arrContests = $contests;
+                  for ( $i = 1; $i < count($contests); $i++ ) {
+                    // If the history array is empty, re-populate it.
+                    if (empty($this->arrContests))
+                      $this->arrContests = $contests;
+
+                    // Randomize the array.
+                    array_rand($this->arrContests);
+
+                    // Select the last value from the array.
+                    $selected = array_pop($this->arrContests);
+                  }
+
+                    Contest::where('is_active', $active_number)->update([
+                        'is_active' => 0
+                    ]);
+
+                  Contest::where('contest_id', $selected['contest_id'])->update(['is_active' => 1]);
+
                 // TODO: contest is over start new one
             }
         } else {
@@ -96,7 +115,7 @@ class CheckContestExpire extends Command
 
                 $mail = Contest::join('users', 'users.user_id', '=', 'contests.user_id')->where('contests.is_active', 1)->get()->first();
 
-                Mail::raw('Congratulation, you won the contest!', function($message) use($mail)
+                Mail::raw('Someone won the contest', function($message) use($mail)
                 {
                         $message->to($mail['email']);
                 });

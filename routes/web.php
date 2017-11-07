@@ -41,6 +41,9 @@ Route::group(['middleware' => ['auth']], function () {
 		});
 		Route::prefix('contests')->group(function() {
 			Route::get('', ['as' => 'contests.index', 'uses' => 'ContestController@getContests']);
+			Route::get('edit/{contest_id}', ['as' => 'contests.show', 'uses' => 'ContestController@getContestById']);
+			Route::put('edit/{contest_id}', ['as' => 'contests.edit', 'uses' => 'ContestController@update']);
+			Route::get('add', ['as' => 'contests.form', 'uses' => 'ContestController@showForm']);
 			Route::post('add', ['as' => 'contests.add', 'uses' => 'ContestController@store']);
 			Route::delete('{contest_id}', ['as' => 'contests.delete', 'uses' => 'ContestController@destroy']);
 		});

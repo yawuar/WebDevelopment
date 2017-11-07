@@ -18,7 +18,8 @@ class ContestPhotosController extends Controller
      */
     public function index()
     {
-        $contestPhotos = ContestPhotos::orderBy('likes', 'desc')->orderBy('superlikes', 'desc')->get();
+        $contest_id = Contest::where('is_active', 1)->get()->first();
+        $contestPhotos = ContestPhotos::where('contest_id', $contest_id['contest_id'])->orderBy('likes', 'desc')->orderBy('superlikes', 'desc')->get();
         return view('contest.index')->with('contestPhotos', $contestPhotos);
     }
 

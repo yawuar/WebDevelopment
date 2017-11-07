@@ -8413,6 +8413,38 @@ a.navbar-brand {
   border-radius: 0;
 }
 
+.container-fluid .jumbotron.edit {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.container-fluid .jumbotron.edit form {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.container-fluid .jumbotron.edit form input[type="submit"] {
+  background-color: #00CCBC;
+  padding: 5px 15px;
+  color: white;
+  margin-top: 15px;
+}
+
+.container-fluid .jumbotron.edit form .form-group .col-md-12 {
+  padding: 0;
+}
+
+.container-fluid .jumbotron.edit form .form-group .col-md-12 input {
+  width: 100%;
+  margin-bottom: 15px;
+  color: #b4b4b4;
+}
+
+.container-fluid .jumbotron.edit form .form-group .col-md-12 textarea {
+  width: 100%;
+  color: #b4b4b4;
+}
+
 .container-fluid .jumbotron h1 {
   font-size: 3em;
 }
@@ -8470,14 +8502,6 @@ a.navbar-brand {
   font-weight: bold;
 }
 
-.container-fluid .wrapper .col-md-12.responsible .inner .icon {
-  background-image: url("/images/icons/pencil.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 40%;
-  width: 50px;
-}
-
 .container-fluid .wrapper .col-md-6.content,
 .container-fluid .wrapper .col-md-6.detail {
   height: 400px;
@@ -8528,11 +8552,71 @@ a.navbar-brand {
   margin: 15px 0;
 }
 
+.container-fluid .wrapper .col-md-6.content .inner_content .active,
+.container-fluid .wrapper .col-md-6.content .inner_content .inactive {
+  display: block;
+  height: 25px;
+  margin: 15px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+}
+
+.container-fluid .wrapper .col-md-6.content .inner_content .active span,
+.container-fluid .wrapper .col-md-6.content .inner_content .active p,
+.container-fluid .wrapper .col-md-6.content .inner_content .inactive span,
+.container-fluid .wrapper .col-md-6.content .inner_content .inactive p {
+  float: left;
+}
+
+.container-fluid .wrapper .col-md-6.content .inner_content .active span,
+.container-fluid .wrapper .col-md-6.content .inner_content .inactive span {
+  display: block;
+  background-image: url("/images/icons/bell.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  height: 25px;
+  width: 25px;
+}
+
+.container-fluid .wrapper .col-md-6.content .inner_content .active p,
+.container-fluid .wrapper .col-md-6.content .inner_content .inactive p {
+  display: inline-block;
+  margin: 0 0 0 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.container-fluid .wrapper .col-md-6.content .inner_content .active {
+  background-color: #00CCBC;
+  width: 22.5%;
+}
+
+.container-fluid .wrapper .col-md-6.content .inner_content .inactive {
+  background-color: #ee6d66;
+  width: 25%;
+}
+
 .container-fluid .wrapper .col-md-6.content .inner_content form,
-.container-fluid .wrapper .col-md-6.content .inner_content button {
+.container-fluid .wrapper .col-md-6.content .inner_content a {
   height: 50px;
   width: 50%;
   border-radius: 0;
+}
+
+.container-fluid .wrapper .col-md-6.content .inner_content a.change {
+  display: inline-block;
+  background-color: #00CCBC;
+  background-image: url("/images/icons/pencil.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 12.5%;
+  text-indent: 1000px;
 }
 
 .container-fluid .wrapper .col-md-6.content .inner_content form {
@@ -8546,6 +8630,28 @@ a.navbar-brand {
   width: 100%;
   height: 100%;
   border-radius: 0;
+  background-image: url("/images/icons/rubbish.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 12.5%;
+  text-indent: 1000px;
+}
+
+.container-fluid .wrapper .col-md-6.content .inner_content form input:disabled {
+  background-color: #b4b4b4;
+}
+
+.container-fluid .col-md-12 .btn-primary {
+  background-color: #ee6d66;
+  border: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-image: url("/images/icons/add.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 30%;
+  margin-bottom: 50px;
 }
 
 .disqualified {
