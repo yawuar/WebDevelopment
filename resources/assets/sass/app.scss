@@ -10,6 +10,7 @@
 
 $green: #00CCBC;
 $red: #ee6d66;
+$break-small: 768px;
 
 html, body {
     background-color: #fff;
@@ -499,6 +500,11 @@ nav#navigation {
 
 #how {
     height: 90%;
+
+    @media screen and (max-width: 991px) {
+        height: auto;
+    }
+
     .container-fluid {
         height: 100%;
         width: 100%;
@@ -507,10 +513,34 @@ nav#navigation {
         .row {
             margin: 0;
             height: 100%;
+
             .col-md-4 {
                 height: 100%;
+                @media screen and (max-width: $break-small) {
+                    height: 800px;
+                }
+                @media screen and (min-width: $break-small) and (max-width: 991px) {
+                   height: 400px;
+                }
                 background-color: white;
                 padding: 0;
+
+                &:nth-child(2) {
+                    .content {
+                        @media screen and (max-width: $break-small) {
+                            position: absolute;
+                            top: 400px;
+                        }
+                    }
+
+                    .image {
+                        @media screen and (max-width: $break-small) {
+                            position: absolute;
+                            top: 0;
+                            width: 100%;
+                        }
+                    }
+                }
                 
                 .image {
                     height: 50%;
@@ -520,6 +550,15 @@ nav#navigation {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+
+                    @media screen and (min-width: $break-small) and (max-width: 991px) {
+                        width: 50%;
+                        float: left;
+                    }
+
+                    @media screen and (min-width: $break-small) and (max-width: 991px) {
+                        height: 100%;
+                    }
 
                     h1 {
                         margin: 0;
@@ -532,6 +571,15 @@ nav#navigation {
                     display: flex;
                     justify-content: center;
                     align-items: center;
+
+                    @media screen and (min-width: $break-small) and (max-width: 991px) {
+                        width: 50%;
+                        float: left;
+                    }
+
+                    @media screen and (min-width: $break-small) and (max-width: 991px) {
+                        height: 100%;
+                    }
 
                     .inner {
                         width: 60%;

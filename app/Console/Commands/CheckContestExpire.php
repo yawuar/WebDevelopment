@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Contest;
 use App\ContestPhotos;
+use App\User;
 use App\Vote;
 use App\Winner;
 use Carbon\Carbon;
@@ -68,6 +69,7 @@ class CheckContestExpire extends Command
     }
 
     protected function getWinner() {
+        echo 'hello';
         // get Contest Photos likes & superlikes
         $likes = ContestPhotos::orderBy('likes', 'desc')->get();
         // set default value of largest to 0
@@ -91,15 +93,27 @@ class CheckContestExpire extends Command
             // check if object exists
             if($obj) {
                 // send e-mail
-                Mail::raw('Iemand heeft gewonnen', function($message)
+
+                $mail = Contest::join('users', 'users.user_id', '=', 'contests.user_id')->where('contests.is_active', 1)->get()->first();
+
+                Mail::raw('Congratulation, you won the contest!', function($message) use($mail)
                 {
-                    $message->to('yawuarsernadelgado@gmail.com');
+                        $message->to($mail['email']);
                 });
+
                 // insert winner into database
-                Winner::create([
+                $winner = Winner::create([
                     'user_id' => $obj['user_id'],
                     'contest_photos_id' => $obj['contest_photos_id']
                 ]);
+
+                if($winner) {
+                    $email = User::where('user_id', $obj['user_id'])->get()->first();
+                    Mail::raw('Congratulation, you won the contest!', function($message) use($email)
+                    {
+                        $message->to($email['email']);
+                    });
+                }
             }
         }
     }

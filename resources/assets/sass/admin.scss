@@ -6,9 +6,14 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
-$red: #c71f16;
+$red: #ee6d66;
 $grey: #b4b4b4;
 $green: #00CCBC;
+$break-small: 768px;
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+}
 
 #app {
     margin-top: 100px;
@@ -31,26 +36,90 @@ a.navbar-brand {
 
 .container-fluid {
     max-width: 1140px;
-    .col-md-6.detail {
-        height: 400px;
-        overflow: hidden;
-        padding: 0;
+    .wrapper {
+        height: 450px;
+        margin-bottom: 50px;
+        box-shadow: 1px 1px 3px lighten(#000, 75);
 
-        &:nth-child(even) {
-            background-color: white;
+        @media screen and (max-width: $break-small) {
+            height: auto;
+        }
+        .col-md-12.responsible {
+            background-color: $green;
+            height: 50px;
+            p {
+                margin: 0;
+                text-align: center;
+                color: white;
+                line-height: 50px;
+                // padding: 15px 0;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            .inner_content {
-                width: 80%;
+                span {
+                    font-weight: bold;
+                }
             }
         }
+        .col-md-6 {
+            &.content , &.detail {
+                height: 400px;
+                overflow: hidden;
+                padding: 0;
+            }
 
-        img {
-            width: auto;
-            height: 100%;
+            &.detail {
+                img {
+                    width: auto;
+                    height: 100%;
+
+                    @media screen and (max-width: $break-small) {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+
+            &.content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .inner_content {
+                    width: 70%;
+
+                    h1 {
+                        margin: 0;
+                        font-size: 2em;
+                        color: black;
+                    }
+
+                    p {
+                        font-size: 1em;
+                        line-height: 1.6em;
+                        color: black;
+                        font-weight: 100;
+                        margin: 15px 0;
+                    }
+
+                    form, button {
+                        height: 50px;
+                        width: 50%;
+                        border-radius: 0;
+                    }
+
+                    form {
+                        float: left;
+
+                        input {
+                            border: none;
+                            background-color: $red;
+                            color: white;
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 0;
+                        }
+                    }
+                }
+                background-color: white;
+            }
         }
     }
 }

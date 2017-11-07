@@ -86,7 +86,7 @@
         <section id="how">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-sm-12 col-md-4">
                         <div class="image">
                             <h1>1.</h1>
                         </div>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-sm-12 col-md-4">
                         <div class="content">
                             <div class="inner">
                                 <h2>2. Present your meal</h2>
@@ -116,7 +116,7 @@
                             <h1>2.</h1>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-sm-12 col-md-4">
                         <div class="image">
                             <h1>3.</h1>
                         </div>

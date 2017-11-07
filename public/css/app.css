@@ -8871,6 +8871,12 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
   height: 90%;
 }
 
+@media screen and (max-width: 991px) {
+  #how {
+    height: auto;
+  }
+}
+
 #how .container-fluid {
   height: 100%;
   width: 100%;
@@ -8889,6 +8895,33 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
   padding: 0;
 }
 
+@media screen and (max-width: 768px) {
+  #how .container-fluid .row .col-md-4 {
+    height: 800px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #how .container-fluid .row .col-md-4 {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #how .container-fluid .row .col-md-4:nth-child(2) .content {
+    position: absolute;
+    top: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #how .container-fluid .row .col-md-4:nth-child(2) .image {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
 #how .container-fluid .row .col-md-4 .image {
   height: 50%;
   background-repeat: no-repeat;
@@ -8903,6 +8936,19 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #how .container-fluid .row .col-md-4 .image {
+    width: 50%;
+    float: left;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #how .container-fluid .row .col-md-4 .image {
+    height: 100%;
+  }
 }
 
 #how .container-fluid .row .col-md-4 .image h1 {
@@ -8921,6 +8967,19 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #how .container-fluid .row .col-md-4 .content {
+    width: 50%;
+    float: left;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #how .container-fluid .row .col-md-4 .content {
+    height: 100%;
+  }
 }
 
 #how .container-fluid .row .col-md-4 .content .inner {

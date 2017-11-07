@@ -58,12 +58,14 @@ class ContestController extends Controller
 
 	public function destroy($contest_id) {
 		$contest = Contest::where('contest_id', $contest_id);
-		$isActive = $contest->where('is_active', 1)->get()->first()->is_active;
-		if($isActive != 1) {
+		$active = $contest->get()->first()['is_active'];
+		$isActive = $contest->where('is_active', $active)->get()->first()->is_active;
+		if($isActive == 0) {
 			$contest->delete();
-		} else {
-			// show popup message
-			// that gives explanation why admin can't delete the following user
+		}
+		
+		if($isActive == 1) {
+			echo 'contest cannot be deleted';
 		}
 
     	return redirect()->route('contests.index');

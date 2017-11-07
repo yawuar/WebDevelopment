@@ -20,4 +20,8 @@ class Contest extends Model
     protected $fillable = [
         'title', 'content', 'photo_path', 'starting_date', 'ending_date', 'is_active'
     ];
+
+    public function user() {
+        return $this->belongsTo('App\User', 'user_id')->get()->first();
+    }
 }
