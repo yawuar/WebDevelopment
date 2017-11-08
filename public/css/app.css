@@ -8404,7 +8404,7 @@ nav#navigation .container-fluid #logo-banner {
 
 nav#navigation .container-fluid #logo-banner .logo {
   display: block;
-  background: url("/images/logo.svg") no-repeat center center;
+  background: url("/../images/logo.svg") no-repeat center center;
   background-size: 100%;
   width: auto;
   height: 100%;
@@ -8704,7 +8704,7 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
 }
 
 .post-module .thumbnail .superlikes span {
-  background-image: url(/images/icons/star.svg);
+  background-image: url(/../images/icons/star.svg);
 }
 
 .post-module .thumbnail .likes {
@@ -8713,7 +8713,7 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
 }
 
 .post-module .thumbnail .likes span {
-  background-image: url(/images/icons/heart.svg);
+  background-image: url(/../images/icons/heart.svg);
 }
 
 .post-module .thumbnail .like input {
@@ -8848,19 +8848,19 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
 }
 
 .post-module .post-content .post-likes form input.heart {
-  background-image: url(/images/icons/heart.svg);
+  background-image: url(/../images/icons/heart.svg);
 }
 
 .post-module .post-content .post-likes form input.star {
-  background-image: url(/images/icons/star.svg);
+  background-image: url(/../images/icons/star.svg);
 }
 
 .post-module .post-content .post-likes form input.full_heart {
-  background-image: url(/images/icons/full_heart.svg);
+  background-image: url(/../images/icons/full_heart.svg);
 }
 
 .post-module .post-content .post-likes form input.full_star {
-  background-image: url(/images/icons/full_star.svg);
+  background-image: url(/../images/icons/full_star.svg);
 }
 
 .post-module .post-content .post-likes form.superlike input {
@@ -9013,15 +9013,15 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
 }
 
 #how .container-fluid .row .col-md-4:nth-child(1) .image {
-  background-image: url("/images/background/cook.jpg");
+  background-image: url("/../images/background/cook.jpg");
 }
 
 #how .container-fluid .row .col-md-4:nth-child(2) .image {
-  background-image: url("/images/background/presentation.jpg");
+  background-image: url("/../images/background/presentation.jpg");
 }
 
 #how .container-fluid .row .col-md-4:nth-child(3) .image {
-  background-image: url("/images/background/photography.jpg");
+  background-image: url("/../images/background/photography.jpg");
 }
 
 footer {
