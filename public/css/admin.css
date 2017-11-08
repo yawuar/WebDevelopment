@@ -8663,7 +8663,8 @@ a.navbar-brand {
 }
 
 .list-group-item {
-  padding: 10px 0 10px 15px;
+  padding: 0;
+  height: 75px;
 }
 
 .list-group-item .inner_content,
@@ -8672,7 +8673,75 @@ a.navbar-brand {
 }
 
 .list-group-item .inner_content {
-  width: 95%;
+  width: 100%;
+}
+
+.list-group-item .inner_content .title {
+  display: inline-block;
+  width: 85%;
+}
+
+.list-group-item .inner_content .title h4 {
+  margin: 0;
+  padding-left: 50px;
+  line-height: 75px;
+}
+
+.list-group-item .inner_content .buttons {
+  height: 75px;
+  width: 15%;
+}
+
+.list-group-item .inner_content .buttons a {
+  display: inline-block;
+  height: 100%;
+  float: left;
+  width: 33.3333333%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.list-group-item .inner_content .buttons a.disqualified,
+.list-group-item .inner_content .buttons a.notdisqualified,
+.list-group-item .inner_content .buttons a.admin,
+.list-group-item .inner_content .buttons a.user,
+.list-group-item .inner_content .buttons a.remove {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 30%;
+}
+
+.list-group-item .inner_content .buttons a.disqualified,
+.list-group-item .inner_content .buttons a.notdisqualified {
+  background-image: url("/images/icons/delete.svg");
+  background-size: 25%;
+  background-color: #66a1ee;
+}
+
+.list-group-item .inner_content .buttons a.notdisqualified {
+  background-color: #b4b4b4;
+}
+
+.list-group-item .inner_content .buttons a.admin,
+.list-group-item .inner_content .buttons a.user {
+  background-image: url("/images/icons/admin.svg");
+  background-color: #00CCBC;
+}
+
+.list-group-item .inner_content .buttons a.user {
+  background-color: #b4b4b4;
+}
+
+.list-group-item .inner_content .buttons a.remove {
+  background-image: url("/images/icons/rubbish.svg");
+  background-color: #ee6d66;
 }
 
 .list-group-item .delete_btn {
@@ -8806,5 +8875,72 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
 .col-md-12 {
   margin: 0 auto;
   padding: 0;
+}
+
+#table tr td a {
+  display: inline-block;
+  height: 30px;
+  width: 100px !important;
+  float: left;
+  width: 33.3333333%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#table tr td a.disqualified,
+#table tr td a.notdisqualified,
+#table tr td a.admin,
+#table tr td a.user,
+#table tr td a.remove {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 20%;
+}
+
+#table tr td a.disqualified,
+#table tr td a.notdisqualified {
+  background-image: url("/images/icons/delete.svg");
+  background-size: 15%;
+  background-color: #66a1ee;
+}
+
+#table tr td a.notdisqualified {
+  background-color: #b4b4b4;
+}
+
+#table tr td a.admin,
+#table tr td a.user {
+  background-image: url("/images/icons/admin.svg");
+  background-color: #00CCBC;
+}
+
+#table tr td a.user {
+  background-color: #b4b4b4;
+}
+
+#table tr td a.remove {
+  background-image: url("/images/icons/rubbish.svg");
+  background-color: #ee6d66;
+}
+
+.participants {
+  background-color: #ee6d66;
+  display: inline-block;
+  padding: 15px 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.participants:hover {
+  text-decoration: none;
+  background-color: #eb574f;
+  color: white;
 }
 

@@ -16,55 +16,72 @@
 
 	<div class="col-md-12 col-md-offset-1">
 
-		<ul class="list-group">
+		<table id="table" class="table table-bordred table-striped">
+                   
+            <thead>
+            
+	            <th>First Name</th>
 
-			@foreach($users as $user)
+	            <th>Last Name</th>
 
-				<li class="list-group-item">
+	            <th>Address</th>
 
-					<div class="inner_content">
+	            <th>Email</th>
 
-						<div class="title">
+	            <th>Disqualify</th>
 
-		  					<h4>{{ $user['firstname'] }} {{ $user['lastname'] }}</h4>
+	            <th>Admin</th>
+	               
+	            <th>Delete</th>
 
-			  			</div>
+            </thead>
 
-			  			<div class="created_at pull-right">
+	    	<tbody>
 
-			  				{{ Carbon\Carbon::parse($user['created_at'])->format('F d, Y') }}
+	    		@foreach($users as $user)
+	    
+				    <tr>
+					    <td>{{ $user['firstname'] }}</td>
 
-			  			</div>
+					    <td>{{ $user['lastname'] }}</td>
 
-			  			<div class="buttons pull-right">
+					    <td>{{ $user['address'] . ' ' . $user['number'] . ', ' . $user['zipcode'] .' ' . $user['city'] }}</td>
 
-							<a class="{{ ($user['disqualified'] == 1) ? 'disqualified' : 'notdisqualified' }}" href="{{ route('participants.disqualify', ['user_id' => $user['user_id']]) }}">
+					    <td>{{ $user['email'] }}</td>
 
-					          <span class="glyphicon glyphicon-remove"></span>
+					    <td>
+					    	
+					    	<a class="{{ ($user['disqualified'] == 1) ? 'disqualified' : 'notdisqualified' }}" href="{{ route('participants.disqualify', ['user_id' => $user['user_id']]) }}">
+					    		
+					    	</a>
 
-					        </a>
+					    </td>
 
-					        <a class="{{ ($user['is_admin'] == 1) ? 'admin' : 'user' }}" href="{{ route('participants.change', ['user_id' => $user['user_id']]) }}">
+					    <td>
 
-					          <span class="glyphicon glyphicon-user"></span>
+					    	<a class="{{ ($user['is_admin'] == 1) ? 'admin' : 'user' }}" href="{{ route('participants.change', ['user_id' => $user['user_id']]) }}">
+							
+							</a>
 
-					        </a>
+						</td>
 
-			  			</div>
+					    <td>
 
-					</div>
+							<a class="remove" href="{{ route('participants.delete', ['user_id' => $user['user_id']]) }}" class="delete_btn">
 
-					<a href="{{ route('participants.delete', ['user_id' => $user['user_id']]) }}" class="delete_btn">
+							</a>
+		
+					    </td>
 
-						hallo
+				    </tr>
 
-					</a>
+				@endforeach
 
-		  		</li>
+		    </tbody>
+	        
+		</table>
 
-			@endforeach
-
-		</ul>
+		<a class="participants" href="{{ route('participants.excel') }}">Export Participants</a>
 
 	</div>
 

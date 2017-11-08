@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Contest;
+use App\ContestPhotos;
 use App\Http\Controllers\Controller;
+use App\Invite;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
@@ -69,7 +71,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $contest_id = Contest::select('contest_id')->where('is_active', 1)->get()->first();
-        return User::create([
+        $user = User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'address' => $data['address'],
@@ -81,5 +83,21 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        $invite = Invite::where('email', $user['email']);
+
+        if($invite->get()) {
+            $check = $invite->get()->first();
+            if($check['isValidated'] != 1 && $check['hasExtraPoints'] != 1) {
+                $invite->update([
+                    'isValidated' => 1,
+                    'hasExtraPoints' => 1
+                ]);
+
+                ContestPhotos::where('user_id', $check['user_id'])->orderBy('created_at', 'asc')->get()->first()->increment('likes', 5);
+            }
+        }
+
+        return $user;
     }
 }

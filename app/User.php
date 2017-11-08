@@ -33,4 +33,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function hasPhotos() {
+        return $this
+            ->hasMany('App\ContestPhotos', 'user_id');
+    }
+
+    public function hasInvite() {
+        return $this
+            ->hasOne('App\Invite', 'user_id');
+    }
 }

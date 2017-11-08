@@ -1,7 +1,51 @@
 @extends('layouts.contest')
 
 @section('content')
-	
+
+	@if(Auth::check())
+
+		@if(count(Auth::user()->hasPhotos()->get()) > 0)
+
+			@if(count(Auth::user()->hasInvite()->get()) <= 0)
+
+				<div id="invite" class="modal">
+
+
+
+				    <div class="modal-content">
+
+				    	<p>Invite a friend and win 5 extra points on your first photo-meal</p>
+
+				      	{{ Form::open(array('url' => route('invite.add'), 'method' => 'post')) }}
+
+							{!! Form::text('email', '', ['class' => 'email', 'placeholder' => 'Email', 'required' => 'required']) !!}
+
+							@if ($errors->has('email'))
+
+	                            <span class="help-block">
+
+	                                <strong>{{ $errors->first('email') }}</strong>
+
+	                            </span>
+
+	                        @endif
+
+							{!! Form::submit('superLike', ['onclick' => 'return confirm("Are you sure?");']) !!}
+
+						{{ Form::close() }}
+
+						<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+
+				    </div>
+
+				  </div>
+
+			@endif
+
+		@endif
+
+	@endif
+
 		@foreach($contestPhotos as $contestPhoto)
 
 			<div class="col-xs-12 col-sm-6 col-md-4">

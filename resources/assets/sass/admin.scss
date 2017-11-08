@@ -9,6 +9,7 @@
 $red: #ee6d66;
 $grey: #b4b4b4;
 $green: #00CCBC;
+$blue: #66a1ee;
 $break-small: 768px;
 
 h1 {
@@ -298,12 +299,69 @@ a.navbar-brand {
 }
 
 .list-group-item {
-    padding: 10px 0 10px 15px;
+    padding: 0;
+    height: 75px;
     .inner_content, .delete_btn {
         float: left;
     }
     .inner_content {
-        width: 95%;
+        width: 100%;
+
+        .title {
+            display: inline-block;
+            width: 85%;
+            h4 {
+                margin: 0;
+                padding-left: 50px;
+                line-height: 75px;
+            }
+        }
+
+        .buttons {
+            height: 75px;
+            width: 15%;
+
+            a {
+                display: inline-block;
+                height: 100%;
+                float: left;
+
+                width: 33.3333333%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &.disqualified, &.notdisqualified, &.admin, &.user, &.remove {
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: 30%;
+                }
+
+                &.disqualified, &.notdisqualified {
+                    background-image: url('/images/icons/delete.svg');
+                    background-size: 25%;
+                    background-color: $blue;
+                }
+
+                &.notdisqualified {
+                    background-color: $grey;
+                }
+
+                &.admin, &.user {
+                    background-image: url('/images/icons/admin.svg');
+                    background-color: $green;
+                }
+
+                &.user {
+                    background-color: $grey;
+                }
+
+                &.remove {
+                    background-image: url('/images/icons/rubbish.svg');
+                    background-color: $red;
+                }
+            }
+        }
     }
 
     .delete_btn {
@@ -424,4 +482,66 @@ nav#navigation {
 .col-md-12 {
     margin: 0 auto;
     padding: 0;
+}
+
+#table {
+    tr {
+        td {
+            a {
+                display: inline-block;
+                height: 30px;
+                width: 100px !important;
+                float: left;
+
+                width: 33.3333333%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &.disqualified, &.notdisqualified, &.admin, &.user, &.remove {
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: 20%;
+                }
+
+                &.disqualified, &.notdisqualified {
+                    background-image: url('/images/icons/delete.svg');
+                    background-size: 15%;
+                    background-color: $blue;
+                }
+
+                &.notdisqualified {
+                    background-color: $grey;
+                }
+
+                &.admin, &.user {
+                    background-image: url('/images/icons/admin.svg');
+                    background-color: $green;
+                }
+
+                &.user {
+                    background-color: $grey;
+                }
+
+                &.remove {
+                    background-image: url('/images/icons/rubbish.svg');
+                    background-color: $red;
+                }
+            }
+        }
+    }
+}
+
+.participants {
+    background-color: $red;
+    display: inline-block;
+    padding: 15px 20px;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: none;
+        background-color: darken($red, 5);
+        color: white;
+    }
 }
