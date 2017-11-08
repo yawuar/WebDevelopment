@@ -99,17 +99,11 @@
 
 								@else
 
-									@if($contestPhoto->votes()->where('user_id', Auth::user()->user_id)->get()->first()['isLiked'] == 1)
+									@if($contestPhoto->votes()->where('user_id', Auth::user()->user_id)->where('like', 1)->get()->first()['isLiked'] == 1)
 
 										{{ Form::open(array('url' => route('votes.unLike', ['id' => $contestPhoto['contest_photos_id']]), 'class' => 'like', 'method' => 'delete')) }}
 
 											{!! Form::submit('unlike', ['onclick' => 'return confirm("Are you sure?");', 'class' => ($contestPhoto->votes()->where('user_id', Auth::user()->user_id)->get()->first()['like'] == 1) ? 'full_heart' : 'heart']) !!}
-
-											{{ Form::close() }}
-
-											{{ Form::open(array('url' => route('votes.storeSuperLike', ['id' => $contestPhoto['contest_photos_id']]), 'class' => 'like superlike')) }}
-
-											{!! Form::submit('superLike', ['onclick' => 'return confirm("Are you sure?");', 'class' => (count($contestPhoto->votes()->where('user_id', Auth::user()->user_id)->where('super_like', 1)->get()) == 1) ? 'full_star' : 'star']) !!}
 
 										{{ Form::close() }}
 
@@ -119,15 +113,19 @@
 
 											{!! Form::submit('like', ['onclick' => 'return confirm("Are you sure?");', 'class' => 'heart']) !!}
 
-											{{ Form::close() }}
-
-											{{ Form::open(array('url' => route('votes.storeSuperLike', ['id' => $contestPhoto['contest_photos_id']]), 'class' => 'like superlike')) }}
-
-											{!! Form::submit('superLike', ['onclick' => 'return confirm("Are you sure?");', 'class' => (count($contestPhoto->votes()->where('user_id', Auth::user()->user_id)->where('super_like', 1)->get()) == 1) ? 'full_star' : 'star']) !!}
-
 										{{ Form::close() }}
 
 									@endif
+
+										{{ Form::open(array('url' => route('votes.storeSuperLike', ['id' => $contestPhoto['contest_photos_id']]), 'class' => 'like superlike')) }}
+
+											{!! Form::submit('superLike', 
+												['onclick' => 'return confirm("Are you sure?");', 
+												'class' => (count($contestPhoto->votes()->where('user_id', Auth::user()->user_id)->where('super_like', 1)->get()) == 1) ? 'full_star' : 'star',
+												]) 
+											!!}
+
+										{{ Form::close() }}
 
 								@endif
 

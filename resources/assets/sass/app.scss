@@ -22,6 +22,20 @@ html, body {
     margin: 0;
 }
 
+.how {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    background-image: url('/images/icons/scroll.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 30px;
+    height: 30px;
+}
+
 #invite {
     top: 0 !important;
     max-height: 30%;
@@ -159,12 +173,41 @@ nav#navigation {
         }
     }
 }
+#winner {
+    max-height: 50%;
+    width: 50%;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    .modal-content {
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+}
 
-#winners {
+.modal-trigger {
     position: absolute;
     bottom: 50px;
     left: 50px;
+    background-color: #c7c116;
+    background-image: url('/images/icons/trophy.svg');
+    background-size: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
 
+    &:hover {
+        background-color: darken(#c7c116, 10);
+    }
+
+}
+#winners {
+    width: 50%;
+    margin: 0 auto;
     .header {
         text-align: center;
     }
@@ -172,6 +215,13 @@ nav#navigation {
     .winner-cards {
         position: relative;
         height: 225px;
+        p {
+            color: white;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+            font-size: 1.25em;
+        }
         .winner {
             position: absolute;
             background-color: white;
@@ -190,6 +240,7 @@ nav#navigation {
             }
 
             .content {
+                text-align: center;
                 .name {
                     font-weight: bold;
                     font-size: .8em;

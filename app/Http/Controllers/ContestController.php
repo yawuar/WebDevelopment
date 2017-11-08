@@ -71,23 +71,24 @@ class ContestController extends Controller
 	}
 
 	public function update(Request $request, $contest_id) {
-		$this->validate($request, [
-            'title' => 'required|string|max:100',
-            'content' => 'required|string|max:100',
-            'starting_date' => 'required|date',
-            'ending_date' => 'required|date',
-        ]);
+		$contest = Contest::where('contest_id', $contest_id);
 		if ($request->hasFile('photo_path')) {
-			$contest = Contest::where('contest_id', $contest_id);
             $request->file('photo_path')->store('/images/background');
 
             
             $file_name = '/images/background/' . $request->file('photo_path')->hashName();
-
-            $contest->update([
+            	$contest->update([
+					'title' => $request['title'],
+					'content' => $request['content'],
+					'photo_path' => $file_name,
+					'starting_date' => $request['starting_date'],
+					'ending_date' => $request['ending_date'],
+					'user_id' => $request['responsible']
+				]);
+        } else {
+        	$contest->update([
 				'title' => $request['title'],
 				'content' => $request['content'],
-				'photo_path' => $file_name,
 				'starting_date' => $request['starting_date'],
 				'ending_date' => $request['ending_date'],
 				'user_id' => $request['responsible']

@@ -8360,6 +8360,21 @@ body {
   margin: 0;
 }
 
+.how {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: inline-block;
+  background-image: url("/images/icons/scroll.svg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 30px;
+  height: 30px;
+}
+
 #invite {
   top: 0 !important;
   max-height: 30%;
@@ -8524,10 +8539,44 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
   margin-right: 10px;
 }
 
-#winners {
+#winner {
+  max-height: 50%;
+  width: 50%;
+  background-color: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+#winner .modal-content {
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.modal-trigger {
   position: absolute;
   bottom: 50px;
   left: 50px;
+  background-color: #c7c116;
+  background-image: url("/images/icons/trophy.svg");
+  background-size: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.modal-trigger:hover {
+  background-color: #999411;
+}
+
+#winners {
+  width: 50%;
+  margin: 0 auto;
 }
 
 #winners .header {
@@ -8537,6 +8586,14 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
 #winners .winner-cards {
   position: relative;
   height: 225px;
+}
+
+#winners .winner-cards p {
+  color: white;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-size: 1.25em;
 }
 
 #winners .winner-cards .winner {
@@ -8555,6 +8612,10 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
 
 #winners .winner-cards .winner .thumb img {
   width: 100%;
+}
+
+#winners .winner-cards .winner .content {
+  text-align: center;
 }
 
 #winners .winner-cards .winner .content .name {

@@ -50,21 +50,11 @@
 
 	            </div>
 
-	            <div class="form-group{{ $errors->has('photo_path') ? ' has-error' : '' }}">
+	            <div class="form-group">
 
 	                <div class="col-md-12">
 
-	                    {{ Form::file('photo_path', array('value' => $contest['photo_path'], 'required' => 'required')) }}
-
-	                    @if ($errors->has('photo_path'))
-
-	                        <span class="help-block">
-
-	                            <strong>{{ $errors->first('photo_path') }}</strong>
-
-	                        </span>
-
-	                    @endif
+	                    {{ Form::file('photo_path', array('value' => $contest['photo_path'])) }}
 
 	                </div>
 

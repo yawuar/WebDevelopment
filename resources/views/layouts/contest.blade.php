@@ -52,8 +52,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('.modal').modal();
-            $('#invite').modal('open');
+            setInterval(function() {
+                $('.modal').modal();
+                $('#invite').modal('open');
+            }, 30 * 1000);
         });
     </script>
 </body>

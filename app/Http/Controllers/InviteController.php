@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Invite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class InviteController extends Controller
 {
@@ -41,6 +42,10 @@ class InviteController extends Controller
             $this->validate($request, [
                 'email' => 'required|string|max:255',
             ]);
+
+            Mail::send('emails.invite', ['email' => $request['email'], 'name' => Auth::user()->firstname], function($message) use($request){
+                $message->to($request['email']);
+            });
 
             Invite::create([
                 'email' => $request['email'],

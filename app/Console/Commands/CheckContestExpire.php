@@ -73,7 +73,7 @@ class CheckContestExpire extends Command
                     $selected = array_pop($this->arrContests);
                   }
 
-                                  $this->getWinner();
+                    $this->getWinner();
 
                     Contest::where('is_active', $active_number)->update([
                         'is_active' => 0
@@ -118,7 +118,7 @@ class CheckContestExpire extends Command
 
                 Mail::raw('Someone won the contest', function($message) use($mail)
                 {
-                        $message->to($mail['email']);
+                  $message->to($mail['email']);
                 });
 
                 // insert winner into database

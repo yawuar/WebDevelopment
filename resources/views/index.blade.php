@@ -37,17 +37,6 @@
     <body>
         <div style="background: url('{{ $contest['photo_path'] }}') no-repeat center center; background-size: cover;" class="flex-center position-ref full-height">
         @include('includes.header')
-        {{-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> --}}
-            <!-- Modal Structure -->
-            <div id="modal1" class="modal">
-              <div class="modal-content">
-                <p>Invite your friends.</p>
-                <form action="">
-                    <label for="">Friends emailadres</label>
-                    <input type="text" name="email" placeholder="E-mail">
-                </form>
-              </div>
-            </div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -63,26 +52,33 @@
                         @endif
                     </div>
                 </div>
+                <a class="waves-effect waves-light btn modal-trigger" href="#winner"></a>
+                <a class='how' href="#how"></a>
             </div>
-            {{-- <div id="winners">
-                <div class="winner-cards">
-                    @foreach($winners as $winner)
-                        <div class="winner">
-                            <div class="thumb">
-                                <img src="{{ $winner['photo_path'] }}" alt="">
-                            </div>
-                            <div class="content">
-                                <div class="name">
-                                    {{ $winner['firstname'] }} {{ $winner['lastname'] }}
+            <div id="winner" class="modal">
+                <div class="modal-content">
+                    <div id="winners">
+                        <div class="winner-cards">
+                            <p>Previous winners</p>
+                            @foreach($winners as $winner)
+                                <div class="winner">
+                                    <div class="thumb">
+                                        <img src="{{ ($winner['photo_path'] != null) ? $winner['photo_path'] : '/images/users/avatar.png' }}" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <div class="name">
+                                            {{ $winner['firstname'] }} {{ $winner['lastname'] }}
+                                        </div>
+                                        <div class="contest">
+                                            {{ $winner['title'] }}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="contest">
-                                    {{ $winner['title'] }}
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
         <section id="how">
             <div class="container-fluid">
@@ -142,13 +138,11 @@
   crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
         <script>
-            // $(document).ready(function(){
-            //     //initialize all modals           
-            //     $('.modal').modal();
+            $(document).ready(function(){
 
-            //     //now you can open modal from code
-            //     $('#modal1').modal('open');
-            // });
+                $('.modal').modal();
+
+            });
         </script>
     </body>
 </html>
