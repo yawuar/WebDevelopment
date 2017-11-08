@@ -55,7 +55,7 @@ nav#navigation {
             padding: 10px 0;
             .logo {
                 display: block;
-                background: url('/images/logo.svg') no-repeat center center;
+                background: url('../images/logo.svg') no-repeat center center;
                 background-size: 100%;
                 width: auto;
                 height: 100%;
@@ -340,7 +340,7 @@ nav#navigation {
             top: 17.5%;
 
             span {
-                background-image: url(/images/icons/star.svg);
+                background-image: url(../images/icons/star.svg);
             }
         }
     
@@ -349,7 +349,7 @@ nav#navigation {
             top: 10%;
 
             span {
-                background-image: url(/images/icons/heart.svg);
+                background-image: url(../images/icons/heart.svg);
             }
         }
 
@@ -472,19 +472,19 @@ nav#navigation {
                     }
 
                     &.heart {
-                        background-image: url(/images/icons/heart.svg);
+                        background-image: url(../images/icons/heart.svg);
                     }
 
                     &.star {
-                        background-image: url(/images/icons/star.svg);
+                        background-image: url(../images/icons/star.svg);
                     }
 
                     &.full_heart {
-                        background-image: url(/images/icons/full_heart.svg);
+                        background-image: url(../images/icons/full_heart.svg);
                     }
 
                     &.full_star {
-                        background-image: url(/images/icons/full_star.svg);
+                        background-image: url(../images/icons/full_star.svg);
                     }
                 }
             }
@@ -612,19 +612,19 @@ nav#navigation {
 
                 &:nth-child(1) {
                     .image {
-                        background-image: url('/images/background/cook.jpg');
+                        background-image: url('../images/background/cook.jpg');
                     }
                 }
 
                 &:nth-child(2) {
                     .image {
-                        background-image: url('/images/background/presentation.jpg');
+                        background-image: url('../images/background/presentation.jpg');
                     }
                 }
 
                 &:nth-child(3) {
                     .image {
-                        background-image: url('/images/background/photography.jpg');
+                        background-image: url('../images/background/photography.jpg');
                     }
                 }
             }
