@@ -58,7 +58,6 @@ class CheckContestExpire extends Command
                 // check if contest = 1
                 echo 'contest is still busy';
             } else {
-                // $this->getWinner();
 
                 $contests = Contest::where('is_active', 0)->inRandomOrder()->get()->toArray();
                   $this->arrContests = $contests;
@@ -73,6 +72,8 @@ class CheckContestExpire extends Command
                     // Select the last value from the array.
                     $selected = array_pop($this->arrContests);
                   }
+
+                                  $this->getWinner();
 
                     Contest::where('is_active', $active_number)->update([
                         'is_active' => 0

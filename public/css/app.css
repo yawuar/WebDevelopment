@@ -9013,15 +9013,15 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
 }
 
 #how .container-fluid .row .col-md-4:nth-child(1) .image {
-  background-image: url("/../images/background/cook.jpg");
+  background-image: url("/images/background/cook.jpg");
 }
 
 #how .container-fluid .row .col-md-4:nth-child(2) .image {
-  background-image: url("/../images/background/presentation.jpg");
+  background-image: url("/images/background/presentation.jpg");
 }
 
 #how .container-fluid .row .col-md-4:nth-child(3) .image {
-  background-image: url("/../images/background/photography.jpg");
+  background-image: url("/images/background/photography.jpg");
 }
 
 footer {

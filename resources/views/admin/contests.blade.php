@@ -2,6 +2,18 @@
 
 @section('content')
 
+	<nav>
+		
+		<ul>
+			
+			<li><a href="{{ route('participants') }}">Participants</a></li>
+
+			<li><a href="{{ route('contests.index') }}">Contests</a></li>
+
+		</ul>
+
+	</nav>
+
 	@foreach($contests as $contest)
 
 		<div class="wrapper">
@@ -33,8 +45,11 @@
 					<p>{{ $contest['content'] }}</p>
 
 					<div class="{{ ($contest['is_active'] == 1) ? 'active' : 'inactive'  }}">
+
 						<span></span>
+
 						<p>{{ ($contest['is_active'] == 1) ? 'actief' : 'inactief'  }}</p>
+						
 					</div>
 
 					<div class="buttons">

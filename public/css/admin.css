@@ -8780,3 +8780,31 @@ nav#navigation .container-fluid #user-banner .user-management .content .inner a 
   color: white;
 }
 
+.fb {
+  float: left;
+  width: auto;
+}
+
+.fb a,
+.fb button {
+  background-color: #00CCBC;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.fb a:hover,
+.fb button:hover {
+  background-color: darker(#00CCBC, 10) !important;
+}
+
+.fb.marg {
+  margin: 0;
+  padding: 0;
+}
+
+.col-md-12 {
+  margin: 0 auto;
+  padding: 0;
+}
+

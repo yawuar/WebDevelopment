@@ -44,6 +44,14 @@ class ContestController extends Controller
 	}
 
 	public function store(Request $request) {
+
+		$this->validate($request, [
+            'title' => 'required|string|max:100',
+            'content' => 'required|string|max:100',
+            'starting_date' => 'required|date',
+            'ending_date' => 'required|date',
+        ]);
+
 		if ($request->hasFile('photo_path')) {
             $request->file('photo_path')->store('/images/background');
             
@@ -63,6 +71,12 @@ class ContestController extends Controller
 	}
 
 	public function update(Request $request, $contest_id) {
+		$this->validate($request, [
+            'title' => 'required|string|max:100',
+            'content' => 'required|string|max:100',
+            'starting_date' => 'required|date',
+            'ending_date' => 'required|date',
+        ]);
 		if ($request->hasFile('photo_path')) {
 			$contest = Contest::where('contest_id', $contest_id);
             $request->file('photo_path')->store('/images/background');

@@ -55,6 +55,7 @@
                         <div class="description">{!! $contest['content'] !!}</div>
                         @if(!Auth::check())
                             <a href="{{ route('register') }}">Create Account</a>
+                            <a href="{{ route('contest.index') }}">Contest</a>
                         @endif
 
                         @if(Auth::check())

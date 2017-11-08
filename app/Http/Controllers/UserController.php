@@ -31,9 +31,9 @@ class UserController extends Controller
     }
 
     public function destroy($user_id) {
-        $user = User::find($user_id);
+        $user = User::where('user_id', $user_id);
         $user->delete();
 
-        return redirect()->route('admin.index');
+        return redirect()->route('participants');
     }
 }
