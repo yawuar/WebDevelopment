@@ -86,7 +86,7 @@ class RegisterController extends Controller
 
         $invite = Invite::where('email', $user['email']);
 
-        if($invite->get()) {
+        if(count($invite->get()) > 0) {
             $check = $invite->get()->first();
             if($check['isValidated'] != 1 && $check['hasExtraPoints'] != 1) {
                 $invite->update([
